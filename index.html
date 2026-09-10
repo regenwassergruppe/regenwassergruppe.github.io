@@ -5,33 +5,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AQUA Research Group</title>
+<title>AQUA Research Group | Forschungsprojekte</title>
 
-<meta name="description"
-      content="Forschungsprojekte, Entwicklungen und aktuelle Meilensteine der AQUA Research Group.">
+<meta
+    name="description"
+    content="Forschungsprojekte und Vorhaben der AQUA Research Group – Forschung, Entwicklung und Transfer."
+>
 
 <style>
+
 /* =========================================================
    AQUA RESEARCH GROUP
-   Single-file public research portfolio
+   Public Research Portfolio
+   Single-file HTML
    ========================================================= */
 
 :root {
-    --navy: #061426;
-    --navy-2: #0a1d32;
-    --blue: #087ea4;
-    --cyan: #25c4df;
-    --cyan-light: #8be9f5;
-    --white: #f6fbfd;
-    --muted: #8da8b7;
+    --bg: #061522;
+    --bg-soft: #0a2031;
+    --panel: #0c2638;
+    --panel-light: #103149;
+
+    --cyan: #2ed0e5;
+    --cyan-soft: #8cecf5;
+    --blue: #1591bd;
+
+    --text: #f2f9fb;
+    --text-soft: #b4c9d2;
+    --muted: #7893a1;
+
     --line: rgba(255,255,255,.09);
 
-    --green: #35d39a;
-    --yellow: #f4c95d;
-    --orange: #f28c5b;
+    --green: #45d6a2;
+    --yellow: #f1c75b;
+    --orange: #f29462;
 
-    --max: 1220px;
+    --radius: 22px;
+
+    --max-width: 1240px;
 }
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -46,19 +63,29 @@ html {
 body {
     font-family:
         Inter,
-        ui-sans-serif,
-        system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
         sans-serif;
 
     background:
-        radial-gradient(circle at 20% 0%, rgba(37,196,223,.10), transparent 30%),
-        radial-gradient(circle at 90% 15%, rgba(8,126,164,.14), transparent 30%),
-        var(--navy);
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(46,208,229,.10),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(21,145,189,.12),
+            transparent 30%
+        ),
+        var(--bg);
 
-    color: var(--white);
+    color: var(--text);
+
     line-height: 1.6;
 }
 
@@ -72,114 +99,156 @@ img {
     display: block;
 }
 
-/* ---------------------------------------------------------
-   Navigation
-   --------------------------------------------------------- */
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
 .navbar {
     position: sticky;
     top: 0;
+
     z-index: 100;
+
+    background: rgba(6,21,34,.82);
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
-    background: rgba(6,20,38,.78);
     border-bottom: 1px solid var(--line);
 }
 
 .nav-inner {
-    max-width: var(--max);
-    margin: auto;
+    max-width: var(--max-width);
+
     height: 76px;
+
+    margin: auto;
+    padding: 0 24px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 0 24px;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 12px;
 
     font-weight: 800;
-    letter-spacing: .08em;
+    font-size: 14px;
+
+    letter-spacing: .11em;
 }
 
-.brand-mark {
+.brand-symbol {
     width: 40px;
     height: 40px;
-    border-radius: 12px;
 
     display: grid;
     place-items: center;
 
-    background:
-        linear-gradient(135deg, var(--cyan), var(--blue));
+    border-radius: 13px;
 
-    box-shadow:
-        0 8px 30px rgba(37,196,223,.20);
+    background:
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            var(--blue)
+        );
+
+    color: #03141e;
 
     font-size: 20px;
+
+    box-shadow:
+        0 10px 35px rgba(46,208,229,.18);
 }
 
 .nav-links {
     display: flex;
-    gap: 28px;
+    gap: 30px;
+
     color: var(--muted);
-    font-size: 14px;
+
+    font-size: 13px;
+}
+
+.nav-links a {
+    transition: color .2s ease;
 }
 
 .nav-links a:hover {
-    color: white;
+    color: var(--text);
 }
 
-/* ---------------------------------------------------------
-   Hero
-   --------------------------------------------------------- */
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero {
-    max-width: var(--max);
+    max-width: var(--max-width);
+
+    min-height: 610px;
+
     margin: auto;
 
-    min-height: 590px;
-
-    padding: 110px 24px 80px;
+    padding: 100px 24px 80px;
 
     display: grid;
-    grid-template-columns: 1.2fr .8fr;
+    grid-template-columns: 1.15fr .85fr;
+
     align-items: center;
+
     gap: 80px;
 }
 
 .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
 
     padding: 7px 12px;
 
-    border: 1px solid rgba(139,233,245,.2);
     border-radius: 999px;
 
-    color: var(--cyan-light);
-    background: rgba(37,196,223,.06);
+    border: 1px solid rgba(46,208,229,.22);
 
-    font-size: 12px;
-    font-weight: 700;
+    background: rgba(46,208,229,.06);
+
+    color: var(--cyan-soft);
+
+    font-size: 11px;
+    font-weight: 800;
+
     text-transform: uppercase;
-    letter-spacing: .12em;
+    letter-spacing: .14em;
+}
+
+.eyebrow-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--cyan);
+
+    box-shadow:
+        0 0 12px rgba(46,208,229,.7);
 }
 
 .hero h1 {
-    margin-top: 24px;
+    margin-top: 25px;
 
-    font-size: clamp(44px, 6vw, 78px);
+    max-width: 760px;
+
+    font-size: clamp(46px, 6vw, 80px);
+
     line-height: .98;
-    letter-spacing: -.055em;
+
+    letter-spacing: -.065em;
 }
 
 .hero h1 span {
@@ -187,40 +256,53 @@ img {
 }
 
 .hero-text {
-    margin-top: 25px;
-
     max-width: 680px;
 
-    color: var(--muted);
+    margin-top: 27px;
+
+    color: var(--text-soft);
+
     font-size: 18px;
 }
 
+.hero-subline {
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
 .hero-actions {
-    margin-top: 34px;
+    margin-top: 35px;
 
     display: flex;
-    gap: 14px;
     flex-wrap: wrap;
+    gap: 12px;
 }
 
 .button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
     padding: 12px 18px;
 
     border-radius: 12px;
 
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 750;
 
-    transition: .2s;
+    transition: .2s ease;
 }
 
 .button-primary {
-    color: #03121d;
-
     background: var(--cyan);
+    color: #04151f;
 
     box-shadow:
-        0 10px 30px rgba(37,196,223,.18);
+        0 10px 30px rgba(46,208,229,.18);
 }
 
 .button-primary:hover {
@@ -229,242 +311,413 @@ img {
 
 .button-secondary {
     border: 1px solid var(--line);
-    color: var(--white);
+
+    color: var(--text);
 }
 
 .button-secondary:hover {
     background: rgba(255,255,255,.05);
 }
 
-/* ---------------------------------------------------------
-   Hero visual
-   --------------------------------------------------------- */
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
 
 .hero-visual {
+    min-height: 410px;
+
     position: relative;
-    min-height: 390px;
 }
 
-.orbit {
+.hero-orbit {
     position: absolute;
-    inset: 20px;
 
-    border: 1px solid rgba(37,196,223,.15);
+    width: 360px;
+    height: 360px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(46,208,229,.13);
+
     border-radius: 50%;
 }
 
-.orbit::before,
-.orbit::after {
+.hero-orbit::before,
+.hero-orbit::after {
     content: "";
 
     position: absolute;
-    inset: 50px;
 
-    border: 1px solid rgba(37,196,223,.10);
     border-radius: 50%;
+
+    border: 1px solid rgba(46,208,229,.08);
 }
 
-.water-core {
+.hero-orbit::before {
+    inset: 42px;
+}
+
+.hero-orbit::after {
+    inset: 92px;
+}
+
+.hero-water {
     position: absolute;
 
-    width: 190px;
-    height: 190px;
+    width: 175px;
+    height: 175px;
 
-    top: 50%;
     left: 50%;
+    top: 50%;
 
     transform: translate(-50%, -50%);
 
     border-radius: 50%;
 
     background:
-        radial-gradient(circle at 35% 30%,
-        #b6f5fb 0%,
-        var(--cyan) 18%,
-        var(--blue) 55%,
-        #05314c 100%);
+        radial-gradient(
+            circle at 35% 27%,
+            #d5fbff 0%,
+            var(--cyan) 17%,
+            var(--blue) 54%,
+            #06354d 100%
+        );
 
     box-shadow:
-        0 0 90px rgba(37,196,223,.30),
-        inset -20px -25px 40px rgba(0,0,0,.25);
+        0 0 100px rgba(46,208,229,.27),
+        inset -20px -25px 45px rgba(0,0,0,.25);
 
-    animation: float 5s ease-in-out infinite;
+    animation: floating 5s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%,100% { transform: translate(-50%, -50%) translateY(0); }
-    50% { transform: translate(-50%, -50%) translateY(-12px); }
+@keyframes floating {
+    0%,100% {
+        transform: translate(-50%, -50%);
+    }
+
+    50% {
+        transform: translate(-50%, calc(-50% - 10px));
+    }
 }
 
-.stat-card {
+.hero-card {
     position: absolute;
 
-    padding: 17px 19px;
+    padding: 16px 18px;
 
-    border-radius: 16px;
+    border-radius: 15px;
 
-    background: rgba(13,36,56,.72);
+    background: rgba(12,38,56,.82);
+
     border: 1px solid var(--line);
 
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(15px);
 
-    box-shadow: 0 20px 50px rgba(0,0,0,.2);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.20);
 }
 
-.stat-card strong {
+.hero-card strong {
     display: block;
-    font-size: 25px;
+
+    font-size: 23px;
 }
 
-.stat-card small {
+.hero-card span {
     color: var(--muted);
-    font-size: 12px;
+
+    font-size: 11px;
 }
 
-.stat-1 {
+.hero-card-1 {
     top: 30px;
     right: 0;
 }
 
-.stat-2 {
-    bottom: 35px;
+.hero-card-2 {
+    bottom: 70px;
     left: 0;
 }
 
-.stat-3 {
-    right: 30px;
-    bottom: 0;
+.hero-card-3 {
+    right: 35px;
+    bottom: 5px;
 }
 
-/* ---------------------------------------------------------
-   Sections
-   --------------------------------------------------------- */
+
+/* =========================================================
+   GENERAL SECTIONS
+   ========================================================= */
 
 section {
-    max-width: var(--max);
+    max-width: var(--max-width);
+
     margin: auto;
+
     padding: 85px 24px;
 }
 
 .section-header {
-    margin-bottom: 42px;
-
     display: flex;
+
     justify-content: space-between;
     align-items: end;
-    gap: 30px;
+
+    gap: 40px;
+
+    margin-bottom: 40px;
 }
 
 .section-kicker {
     color: var(--cyan);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .14em;
+
+    font-size: 11px;
     font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: .15em;
 }
 
 .section-title {
-    margin-top: 8px;
+    margin-top: 7px;
 
     font-size: clamp(30px, 4vw, 46px);
-    letter-spacing: -.04em;
+
+    line-height: 1.05;
+
+    letter-spacing: -.045em;
 }
 
 .section-description {
     max-width: 520px;
+
     color: var(--muted);
-}
 
-/* ---------------------------------------------------------
-   Research areas
-   --------------------------------------------------------- */
-
-.research-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 18px;
-}
-
-.research-card {
-    padding: 28px;
-
-    border-radius: 20px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.018)
-    );
-
-    border: 1px solid var(--line);
-
-    transition: .25s;
-}
-
-.research-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(37,196,223,.3);
-}
-
-.icon {
-    width: 48px;
-    height: 48px;
-
-    border-radius: 14px;
-
-    display: grid;
-    place-items: center;
-
-    background: rgba(37,196,223,.10);
-
-    color: var(--cyan);
-
-    font-size: 21px;
-}
-
-.research-card h3 {
-    margin-top: 20px;
-    font-size: 19px;
-}
-
-.research-card p {
-    margin-top: 9px;
-    color: var(--muted);
     font-size: 14px;
 }
 
-/* ---------------------------------------------------------
-   Projects
-   --------------------------------------------------------- */
+
+/* =========================================================
+   TIMELINE OVERVIEW
+   ========================================================= */
+
+.timeline-wrapper {
+    padding: 30px;
+
+    border-radius: var(--radius);
+
+    border: 1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
+
+    overflow-x: auto;
+}
+
+.timeline-years {
+    min-width: 820px;
+
+    display: grid;
+
+    grid-template-columns:
+        180px
+        repeat(5, 1fr);
+
+    border-bottom: 1px solid var(--line);
+
+    padding-bottom: 12px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.timeline-years span {
+    padding-left: 12px;
+}
+
+.timeline-row {
+    min-width: 820px;
+
+    display: grid;
+
+    grid-template-columns:
+        180px
+        repeat(5, 1fr);
+
+    min-height: 68px;
+
+    border-bottom: 1px solid rgba(255,255,255,.045);
+
+    position: relative;
+}
+
+.timeline-row:last-child {
+    border-bottom: 0;
+}
+
+.timeline-project-name {
+    display: flex;
+    align-items: center;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.timeline-track {
+    grid-column: 2 / 7;
+
+    position: relative;
+
+    margin: 14px 0;
+
+    border-radius: 10px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 0,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px,
+            transparent 20%
+        );
+}
+
+.timeline-bar {
+    position: absolute;
+
+    top: 50%;
+
+    height: 28px;
+
+    transform: translateY(-50%);
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 8px 25px rgba(46,208,229,.13);
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 12px;
+
+    white-space: nowrap;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    color: #03161f;
+}
+
+.timeline-bar.complete {
+    background: #326b7b;
+
+    color: white;
+}
+
+.timeline-bar.critical {
+    background:
+        linear-gradient(
+            90deg,
+            #b76b4c,
+            var(--orange)
+        );
+
+    color: #21100a;
+}
+
+.timeline-legend {
+    margin-top: 20px;
+
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.legend-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 3px;
+
+    background: var(--cyan);
+}
+
+.legend-dot.complete {
+    background: #326b7b;
+}
+
+.legend-dot.critical {
+    background: var(--orange);
+}
+
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
 
 .projects {
     display: grid;
-    gap: 25px;
+
+    gap: 28px;
 }
+
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
 
 .project {
     position: relative;
 
-    padding: 30px;
+    overflow: hidden;
 
-    border-radius: 24px;
+    border-radius: 25px;
+
+    border: 1px solid var(--line);
 
     background:
         linear-gradient(
-            140deg,
+            145deg,
             rgba(255,255,255,.055),
             rgba(255,255,255,.018)
         );
 
-    border: 1px solid var(--line);
-
-    overflow: hidden;
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.13);
 }
 
 .project::before {
     content: "";
 
     position: absolute;
+
     top: 0;
     left: 0;
     right: 0;
@@ -480,50 +733,103 @@ section {
         );
 }
 
-.project-top {
+.project-main {
+    padding: 30px;
+}
+
+
+/* =========================================================
+   PROJECT HEADER
+   ========================================================= */
+
+.project-header {
     display: grid;
-    grid-template-columns: 85px 1fr auto;
-    gap: 22px;
+
+    grid-template-columns: 82px 1fr auto;
+
     align-items: start;
+
+    gap: 20px;
 }
 
 .project-logo {
-    width: 75px;
-    height: 75px;
+    width: 76px;
+    height: 76px;
 
     border-radius: 18px;
 
     display: grid;
     place-items: center;
 
+    overflow: hidden;
+
     background:
         linear-gradient(
             145deg,
-            rgba(37,196,223,.15),
-            rgba(8,126,164,.25)
+            rgba(46,208,229,.10),
+            rgba(21,145,189,.25)
         );
 
-    border: 1px solid rgba(37,196,223,.15);
+    border: 1px solid rgba(46,208,229,.18);
 
-    color: var(--cyan-light);
+    color: var(--cyan-soft);
 
-    font-size: 27px;
     font-weight: 800;
+    font-size: 20px;
 }
+
+.project-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 10px;
+}
+
+
+/*
+   Logo-Platzhalter:
+   Ersetze z.B.
+
+   <div class="project-logo">
+       AQUA
+   </div>
+
+   durch
+
+   <div class="project-logo">
+       <img src="images/projekt-logo.png"
+            alt="Logo Projektname">
+   </div>
+*/
+
 
 .project-title {
     font-size: 25px;
-    letter-spacing: -.02em;
+
+    letter-spacing: -.025em;
 }
 
 .project-meta {
-    margin-top: 5px;
+    margin-top: 4px;
+
     color: var(--muted);
-    font-size: 13px;
+
+    font-size: 12px;
+}
+
+.project-partners {
+    margin-top: 8px;
+
+    color: var(--text-soft);
+
+    font-size: 12px;
 }
 
 .status {
     display: inline-flex;
+
     align-items: center;
     gap: 7px;
 
@@ -531,8 +837,9 @@ section {
 
     border-radius: 999px;
 
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
+
     text-transform: uppercase;
     letter-spacing: .05em;
 }
@@ -547,66 +854,208 @@ section {
 }
 
 .status-active {
-    background: rgba(53,211,154,.10);
     color: var(--green);
+
+    background: rgba(69,214,162,.09);
 }
 
 .status-active::before {
     background: var(--green);
 }
 
-.status-critical {
-    background: rgba(242,140,91,.10);
+.status-endphase {
     color: var(--orange);
+
+    background: rgba(242,148,98,.09);
 }
 
-.status-critical::before {
+.status-endphase::before {
     background: var(--orange);
 }
 
 .status-complete {
-    background: rgba(37,196,223,.10);
     color: var(--cyan);
+
+    background: rgba(46,208,229,.09);
 }
 
 .status-complete::before {
     background: var(--cyan);
 }
 
+
+/* =========================================================
+   PROJECT IMAGE
+   ========================================================= */
+
+.project-image {
+    margin-top: 28px;
+
+    height: 255px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    border: 1px solid var(--line);
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(46,208,229,.16),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #0d354b,
+            #071b2b
+        );
+
+    display: grid;
+    place-items: center;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.image-placeholder {
+    text-align: center;
+
+    color: var(--muted);
+
+    padding: 30px;
+}
+
+.image-placeholder-symbol {
+    width: 54px;
+    height: 54px;
+
+    margin: 0 auto 13px;
+
+    border-radius: 15px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px dashed rgba(46,208,229,.35);
+
+    color: var(--cyan);
+
+    font-size: 22px;
+}
+
+.image-placeholder strong {
+    display: block;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+}
+
+.image-placeholder span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+}
+
+
+/*
+   BILD EINFÜGEN
+
+   Ersetze den gesamten .image-placeholder Block durch:
+
+   <img
+       src="images/projektbild.jpg"
+       alt="Beschreibung des Projekts">
+
+   Empfehlenswert:
+   ca. 1600 × 900 Pixel
+*/
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
 .project-description {
-    margin-top: 22px;
+    margin-top: 24px;
 
-    max-width: 900px;
+    max-width: 980px;
 
-    color: #b5c9d3;
+    color: var(--text-soft);
+
     font-size: 15px;
 }
 
-/* ---------------------------------------------------------
-   Progress
-   --------------------------------------------------------- */
 
-.progress-area {
-    margin-top: 27px;
+/* =========================================================
+   PROJECT AREA PROGRESS
+   ========================================================= */
+
+.progress-section {
+    margin-top: 30px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid var(--line);
 }
 
-.progress-header {
-    display: flex;
-    justify-content: space-between;
+.progress-title {
+    margin-bottom: 17px;
 
-    margin-bottom: 9px;
-
-    font-size: 12px;
-    color: var(--muted);
-}
-
-.progress-value {
-    color: var(--cyan-light);
+    font-size: 13px;
     font-weight: 800;
 }
 
-.progress {
-    height: 8px;
+.progress-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+}
+
+.progress-item {
+    padding: 17px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.025);
+
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.progress-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.progress-percent {
+    color: var(--cyan-soft);
+
+    font-weight: 800;
+}
+
+.progress-track {
+    height: 6px;
 
     border-radius: 999px;
 
@@ -615,7 +1064,7 @@ section {
     overflow: hidden;
 }
 
-.progress-bar {
+.progress-fill {
     height: 100%;
 
     border-radius: inherit;
@@ -626,80 +1075,45 @@ section {
             var(--blue),
             var(--cyan)
         );
-
-    box-shadow:
-        0 0 20px rgba(37,196,223,.25);
 }
 
-/* ---------------------------------------------------------
-   Timeline
-   --------------------------------------------------------- */
 
-.timeline {
+/* =========================================================
+   MILESTONES
+   ========================================================= */
+
+.milestone-section {
     margin-top: 30px;
-
-    display: grid;
-    grid-template-columns: 150px 1fr;
-
-    gap: 15px;
 }
 
-.timeline-label {
-    color: var(--muted);
-    font-size: 12px;
-}
+.milestone-title {
+    margin-bottom: 17px;
 
-.timeline-track {
-    position: relative;
-
-    height: 34px;
-
-    border-radius: 8px;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            rgba(255,255,255,.035) 0,
-            rgba(255,255,255,.035) 1px,
-            transparent 1px,
-            transparent 14.28%
-        );
-
-    border: 1px solid rgba(255,255,255,.05);
-}
-
-.timeline-progress {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-
-    border-radius: 7px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(8,126,164,.7),
-            rgba(37,196,223,.75)
-        );
+    font-size: 13px;
+    font-weight: 800;
 }
 
 .milestones {
-    margin-top: 26px;
-
     display: grid;
-    grid-template-columns: repeat(4,1fr);
 
-    gap: 10px;
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
 }
 
 .milestone {
-    padding: 15px;
+    position: relative;
 
-    border-radius: 14px;
+    padding: 18px;
+
+    min-height: 105px;
+
+    border-radius: 15px;
 
     background: rgba(255,255,255,.025);
-    border: 1px solid var(--line);
+
+    border: 1px solid rgba(255,255,255,.06);
 }
 
 .milestone-dot {
@@ -708,50 +1122,61 @@ section {
 
     border-radius: 50%;
 
+    margin-bottom: 11px;
+
     background: var(--cyan);
 
-    box-shadow: 0 0 14px rgba(37,196,223,.5);
-
-    margin-bottom: 10px;
+    box-shadow:
+        0 0 13px rgba(46,208,229,.45);
 }
 
 .milestone.future .milestone-dot {
-    background: #4d6471;
+    background: #526a76;
+
     box-shadow: none;
 }
 
 .milestone strong {
     display: block;
-    font-size: 13px;
+
+    font-size: 12px;
 }
 
 .milestone span {
     display: block;
+
     margin-top: 3px;
+
     color: var(--muted);
-    font-size: 11px;
+
+    font-size: 10px;
 }
 
-/* ---------------------------------------------------------
-   Project footer
-   --------------------------------------------------------- */
+
+/* =========================================================
+   PROJECT FOOTER
+   ========================================================= */
 
 .project-footer {
-    margin-top: 28px;
-    padding-top: 20px;
+    margin-top: 30px;
+
+    padding-top: 22px;
 
     border-top: 1px solid var(--line);
 
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
+    align-items: center;
 
     gap: 20px;
 }
 
-.project-tags {
+.tags {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 7px;
 }
 
@@ -760,210 +1185,164 @@ section {
 
     border-radius: 7px;
 
-    color: var(--muted);
-
     background: rgba(255,255,255,.035);
 
-    font-size: 11px;
+    color: var(--muted);
+
+    font-size: 10px;
 }
 
 .project-link {
-    color: var(--cyan-light);
+    display: inline-flex;
 
-    font-size: 13px;
-    font-weight: 700;
+    align-items: center;
+
+    gap: 7px;
+
+    color: var(--cyan-soft);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    white-space: nowrap;
 }
 
 .project-link:hover {
     color: white;
 }
 
-/* ---------------------------------------------------------
-   Current status
-   --------------------------------------------------------- */
 
-.current-state {
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-grid {
     display: grid;
-    grid-template-columns: .9fr 1.1fr;
-    gap: 20px;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap: 18px;
 }
 
-.state-card {
-    padding: 32px;
+.about-card {
+    padding: 28px;
 
-    border-radius: 22px;
+    border-radius: 20px;
 
     border: 1px solid var(--line);
 
     background:
         linear-gradient(
             145deg,
-            rgba(37,196,223,.07),
-            rgba(255,255,255,.02)
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
         );
 }
 
-.state-number {
-    font-size: 62px;
-    line-height: 1;
-
-    font-weight: 800;
-
-    color: var(--cyan);
-}
-
-.state-card h3 {
-    margin-top: 12px;
-    font-size: 22px;
-}
-
-.state-card p {
-    margin-top: 9px;
-    color: var(--muted);
-}
-
-.state-list {
-    display: grid;
-    gap: 10px;
-}
-
-.state-item {
-    padding: 17px;
-
-    display: grid;
-    grid-template-columns: 42px 1fr auto;
-    align-items: center;
-    gap: 14px;
-
-    border-radius: 15px;
-
-    background: rgba(255,255,255,.025);
-    border: 1px solid var(--line);
-}
-
-.state-icon {
-    width: 38px;
-    height: 38px;
-
-    border-radius: 11px;
+.about-icon {
+    width: 46px;
+    height: 46px;
 
     display: grid;
     place-items: center;
 
-    background: rgba(37,196,223,.08);
+    border-radius: 13px;
 
     color: var(--cyan);
+
+    background: rgba(46,208,229,.08);
+
+    font-size: 19px;
 }
 
-.state-item strong {
-    font-size: 13px;
+.about-card h3 {
+    margin-top: 18px;
+
+    font-size: 18px;
 }
 
-.state-item span {
-    display: block;
+.about-card p {
+    margin-top: 8px;
+
     color: var(--muted);
-    font-size: 11px;
-}
 
-.state-item b {
-    color: var(--cyan-light);
     font-size: 13px;
 }
 
-/* ---------------------------------------------------------
-   Numbers
-   --------------------------------------------------------- */
 
-.numbers {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 15px;
-}
-
-.number-card {
-    padding: 25px;
-
-    border-radius: 18px;
-
-    border: 1px solid var(--line);
-
-    background: rgba(255,255,255,.025);
-}
-
-.number {
-    font-size: 36px;
-    font-weight: 800;
-
-    color: var(--cyan);
-}
-
-.number-label {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-/* ---------------------------------------------------------
-   Footer
-   --------------------------------------------------------- */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
     margin-top: 40px;
 
     border-top: 1px solid var(--line);
 
-    background: rgba(0,0,0,.12);
+    background: rgba(0,0,0,.13);
 }
 
 .footer-inner {
-    max-width: var(--max);
+    max-width: var(--max-width);
+
     margin: auto;
 
     padding: 35px 24px;
 
     display: flex;
+
     justify-content: space-between;
+
     gap: 30px;
 
     color: var(--muted);
 
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .footer-brand {
-    color: white;
+    color: var(--text);
+
     font-weight: 800;
+
+    letter-spacing: .08em;
 }
 
-/* ---------------------------------------------------------
-   Responsive
-   --------------------------------------------------------- */
 
-@media (max-width: 900px) {
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
 
     .hero {
         grid-template-columns: 1fr;
+
         gap: 40px;
+
         padding-top: 75px;
     }
 
     .hero-visual {
-        min-height: 320px;
+        min-height: 350px;
     }
 
-    .research-grid {
+    .progress-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .milestones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid {
         grid-template-columns: 1fr;
-    }
-
-    .current-state {
-        grid-template-columns: 1fr;
-    }
-
-    .numbers {
-        grid-template-columns: repeat(2,1fr);
     }
 }
 
-@media (max-width: 680px) {
+
+@media (max-width: 700px) {
 
     .nav-links {
         display: none;
@@ -979,37 +1358,70 @@ footer {
     }
 
     .hero h1 {
-        font-size: 47px;
+        font-size: 48px;
     }
 
     .hero-text {
         font-size: 16px;
     }
 
-    .project {
-        padding: 21px;
+    .hero-visual {
+        min-height: 300px;
     }
 
-    .project-top {
-        grid-template-columns: 60px 1fr;
+    .hero-orbit {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-water {
+        width: 135px;
+        height: 135px;
+    }
+
+    .hero-card {
+        padding: 12px 14px;
+    }
+
+    .hero-card strong {
+        font-size: 18px;
+    }
+
+    .hero-card-1 {
+        right: 0;
+    }
+
+    .hero-card-2 {
+        left: 0;
+    }
+
+    .project-main {
+        padding: 20px;
+    }
+
+    .project-header {
+        grid-template-columns: 62px 1fr;
     }
 
     .project-logo {
         width: 58px;
         height: 58px;
-        border-radius: 14px;
     }
 
     .project-title {
         font-size: 20px;
     }
 
-    .project-top .status {
+    .project-header .status {
         grid-column: 1 / -1;
         width: fit-content;
     }
 
-    .timeline {
+    .project-image {
+        height: 210px;
+    }
+
+    .progress-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1018,44 +1430,74 @@ footer {
     }
 
     .project-footer {
-        align-items: flex-start;
         flex-direction: column;
-    }
 
-    .numbers {
-        grid-template-columns: 1fr 1fr;
+        align-items: flex-start;
     }
 
     .footer-inner {
         flex-direction: column;
     }
 }
+
+
+@media (max-width: 450px) {
+
+    .milestones {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-card-3 {
+        display: none;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      NAVIGATION
      ===================================================== -->
 
 <nav class="navbar">
+
     <div class="nav-inner">
 
         <a href="#" class="brand">
-            <div class="brand-mark">≈</div>
+
+            <div class="brand-symbol">
+                ≈
+            </div>
+
             AQUA RESEARCH
+
         </a>
 
+
         <div class="nav-links">
-            <a href="#research">Forschung</a>
-            <a href="#projects">Projekte</a>
-            <a href="#status">Status</a>
-            <a href="#about">Über uns</a>
+
+            <a href="#timeline">
+                Projektlaufzeiten
+            </a>
+
+            <a href="#projects">
+                Vorhaben
+            </a>
+
+            <a href="#about">
+                Forschungsgruppe
+            </a>
+
         </div>
 
     </div>
+
 </nav>
+
 
 
 <!-- =====================================================
@@ -1067,30 +1509,59 @@ footer {
     <div>
 
         <div class="eyebrow">
-            ● Research & Innovation
+
+            <span class="eyebrow-dot"></span>
+
+            Research · Innovation · Transfer
+
         </div>
 
+
         <h1>
-            Forschung,<br>
-            die <span>Wasser</span><br>
-            bewegt.
+
+            Forschung sichtbar machen.<br>
+
+            <span>Vorhaben verstehen.</span>
+
         </h1>
 
+
         <p class="hero-text">
-            Willkommen bei der AQUA Research Group. Wir entwickeln
-            wissenschaftliche Lösungen für die Herausforderungen
-            von morgen – von der Grundlagenforschung bis zum
-            praktischen Demonstrator.
+
+            Willkommen bei der AQUA Research Group.
+            Auf dieser Seite geben wir einen Einblick in unsere
+            Forschungs- und Entwicklungsprojekte – von der
+            wissenschaftlichen Fragestellung über die Entwicklung
+            bis zum Transfer in die Praxis.
+
         </p>
+
+
+        <p class="hero-subline">
+
+            Ein Überblick über unsere Vorhaben und deren aktuelle
+            Entwicklung.
+
+        </p>
+
 
         <div class="hero-actions">
 
-            <a href="#projects" class="button button-primary">
-                Unsere Projekte
+            <a
+                href="#projects"
+                class="button button-primary">
+
+                Projekte entdecken
+
             </a>
 
-            <a href="#about" class="button button-secondary">
-                Über die Forschungsgruppe
+
+            <a
+                href="#timeline"
+                class="button button-secondary">
+
+                Projektlaufzeiten
+
             </a>
 
         </div>
@@ -1098,25 +1569,44 @@ footer {
     </div>
 
 
+
     <div class="hero-visual">
 
-        <div class="orbit"></div>
+        <div class="hero-orbit"></div>
 
-        <div class="water-core"></div>
+        <div class="hero-water"></div>
 
-        <div class="stat-card stat-1">
+
+        <div class="hero-card hero-card-1">
+
             <strong>06</strong>
-            <small>aktive Projekte</small>
+
+            <span>
+                aktuelle Vorhaben
+            </span>
+
         </div>
 
-        <div class="stat-card stat-2">
-            <strong>72%</strong>
-            <small>Projektfortschritt</small>
+
+        <div class="hero-card hero-card-2">
+
+            <strong>2024–2029</strong>
+
+            <span>
+                Forschungszeitraum
+            </span>
+
         </div>
 
-        <div class="stat-card stat-3">
-            <strong>2026</strong>
-            <small>aktuelles Forschungsjahr</small>
+
+        <div class="hero-card hero-card-3">
+
+            <strong>Research</strong>
+
+            <span>
+                Development · Transfer
+            </span>
+
         </div>
 
     </div>
@@ -1124,78 +1614,216 @@ footer {
 </header>
 
 
+
 <!-- =====================================================
-     RESEARCH AREAS
+     TIMELINE
      ===================================================== -->
 
-<section id="research">
+<section id="timeline">
 
     <div class="section-header">
 
         <div>
+
             <div class="section-kicker">
-                Forschung
+                Zeitlicher Überblick
             </div>
 
             <h2 class="section-title">
-                Unsere Schwerpunkte
+                Wann läuft welches Vorhaben?
             </h2>
+
         </div>
 
+
         <p class="section-description">
-            Interdisziplinäre Forschung verbindet Wissenschaft,
-            Technologie und praktische Anwendung.
+
+            Die Zeitachse zeigt ausschließlich die Laufzeiten
+            unserer einzelnen Projekte. Sie stellt keinen
+            gemeinsamen Projektfortschritt dar.
+
         </p>
 
     </div>
 
 
-    <div class="research-grid">
-
-        <article class="research-card">
-
-            <div class="icon">◈</div>
-
-            <h3>Wasser & Ressourcen</h3>
-
-            <p>
-                Innovative Ansätze für einen nachhaltigen Umgang
-                mit Wasserressourcen und zukünftige Versorgungssysteme.
-            </p>
-
-        </article>
+    <div class="timeline-wrapper">
 
 
-        <article class="research-card">
+        <!-- Jahreszeile -->
 
-            <div class="icon">⌁</div>
+        <div class="timeline-years">
 
-            <h3>Digitale Systeme</h3>
+            <span>Projekt</span>
 
-            <p>
-                Sensorik, Datenanalyse und digitale Modelle zur
-                Beobachtung und Optimierung komplexer Systeme.
-            </p>
+            <span>2024</span>
 
-        </article>
+            <span>2025</span>
+
+            <span>2026</span>
+
+            <span>2027</span>
+
+            <span>2028</span>
+
+        </div>
 
 
-        <article class="research-card">
 
-            <div class="icon">✦</div>
+        <!-- Projekt 1 -->
 
-            <h3>Technologie & Transfer</h3>
+        <div class="timeline-row">
 
-            <p>
-                Von der wissenschaftlichen Idee über Prototypen
-                bis hin zu Demonstratoren und realen Anwendungen.
-            </p>
+            <div class="timeline-project-name">
+                AQUA-SENSE
+            </div>
 
-        </article>
+            <div class="timeline-track">
+
+                <div
+                    class="timeline-bar"
+                    style="left: 20%; width: 60%;">
+
+                    01/2025 – 12/2027
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Projekt 2 -->
+
+        <div class="timeline-row">
+
+            <div class="timeline-project-name">
+                HYDRO-OPT
+            </div>
+
+            <div class="timeline-track">
+
+                <div
+                    class="timeline-bar critical"
+                    style="left: 5%; width: 52%;">
+
+                    04/2024 – 09/2026
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Projekt 3 -->
+
+        <div class="timeline-row">
+
+            <div class="timeline-project-name">
+                ECOFLOW
+            </div>
+
+            <div class="timeline-track">
+
+                <div
+                    class="timeline-bar complete"
+                    style="left: 0%; width: 40%;">
+
+                    01/2024 – 12/2025
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Projekt 4 -->
+
+        <div class="timeline-row">
+
+            <div class="timeline-project-name">
+                BLUE-TECH
+            </div>
+
+            <div class="timeline-track">
+
+                <div
+                    class="timeline-bar"
+                    style="left: 38%; width: 57%;">
+
+                    06/2026 – 03/2029
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Projekt 5 -->
+
+        <div class="timeline-row">
+
+            <div class="timeline-project-name">
+                WATER-LAB
+            </div>
+
+            <div class="timeline-track">
+
+                <div
+                    class="timeline-bar"
+                    style="left: 58%; width: 35%;">
+
+                    01/2027 – 10/2028
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="timeline-legend">
+
+            <div class="legend-item">
+
+                <span class="legend-dot"></span>
+
+                Laufendes Vorhaben
+
+            </div>
+
+
+            <div class="legend-item">
+
+                <span class="legend-dot critical"></span>
+
+                Endphase
+
+            </div>
+
+
+            <div class="legend-item">
+
+                <span class="legend-dot complete"></span>
+
+                Abgeschlossen
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -1213,152 +1841,371 @@ footer {
             </div>
 
             <h2 class="section-title">
-                Unsere Projekte
+                Unsere Vorhaben
             </h2>
 
         </div>
 
+
         <p class="section-description">
-            Ein transparenter Überblick über laufende und
-            abgeschlossene Forschungsarbeiten.
+
+            Jedes Vorhaben wird unabhängig betrachtet:
+            mit eigener Laufzeit, eigenen Meilensteinen und
+            einem eigenen Stand in Forschung und Transfer.
+
         </p>
 
     </div>
+
 
 
     <div class="projects">
 
 
-        <!-- PROJECT 01 -->
+
+        <!-- =================================================
+             PROJECT 1
+             ================================================= -->
 
         <article class="project">
 
-            <div class="project-top">
+            <div class="project-main">
 
-                <div class="project-logo">
-                    AQ
-                </div>
 
-                <div>
+                <div class="project-header">
 
-                    <h3 class="project-title">
-                        AQUA-SENSE
-                    </h3>
 
-                    <div class="project-meta">
-                        01.01.2025 – 31.12.2027 · Forschungsprojekt
+                    <!-- LOGO -->
+
+                    <div class="project-logo">
+
+                        AQ
+
+                        <!--
+
+                        ECHTES LOGO:
+
+                        <img
+                            src="images/aqua-sense-logo.png"
+                            alt="AQUA-SENSE Logo">
+
+                        -->
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 class="project-title">
+                            AQUA-SENSE
+                        </h3>
+
+                        <div class="project-meta">
+
+                            01.01.2025 – 31.12.2027
+                            · Forschungsprojekt
+
+                        </div>
+
+                        <div class="project-partners">
+
+                            Beispiel · Universität · Forschungspartner
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status status-active">
+
+                        In Bearbeitung
+
                     </div>
 
                 </div>
 
-                <div class="status status-active">
-                    In Bearbeitung
-                </div>
-
-            </div>
 
 
-            <p class="project-description">
-                Entwicklung eines intelligenten Sensorsystems zur
-                kontinuierlichen Überwachung von Wasserqualität
-                und Umweltparametern. Ziel ist die Kombination
-                energieeffizienter Sensorik mit intelligenter
-                Datenanalyse.
-            </p>
+                <!-- PROJEKTBILD -->
+
+                <div class="project-image">
 
 
-            <div class="progress-area">
+                    <!--
 
-                <div class="progress-header">
-                    <span>Aktueller Projektstand</span>
-                    <span class="progress-value">68 %</span>
-                </div>
+                    BILD EINSETZEN:
 
-                <div class="progress">
-                    <div class="progress-bar" style="width:68%"></div>
-                </div>
+                    <img
+                        src="images/aqua-sense.jpg"
+                        alt="Feldversuch des Projekts AQUA-SENSE">
 
-            </div>
+                    -->
 
 
-            <div class="timeline">
+                    <div class="image-placeholder">
 
-                <span class="timeline-label">
-                    Projektlaufzeit
-                </span>
+                        <div class="image-placeholder-symbol">
+                            ◫
+                        </div>
 
-                <div class="timeline-track">
+                        <strong>
+                            Bild aus dem Vorhaben
+                        </strong>
 
-                    <div
-                        class="timeline-progress"
-                        style="width:68%">
+                        <span>
+                            Platzhalter für Projektfoto / Demonstrator
+                        </span>
+
                     </div>
 
                 </div>
 
-            </div>
 
 
-            <div class="milestones">
+                <!-- BESCHREIBUNG -->
 
-                <div class="milestone">
+                <p class="project-description">
 
-                    <div class="milestone-dot"></div>
+                    AQUA-SENSE untersucht neue Möglichkeiten zur
+                    kontinuierlichen Erfassung von Wasserqualitäts-
+                    und Umweltparametern. Entwickelt werden
+                    energieeffiziente Sensorsysteme in Verbindung
+                    mit moderner Datenanalyse.
 
-                    <strong>Konzept</strong>
-                    <span>Q2 2025 · abgeschlossen</span>
+                </p>
+
+
+
+                <!-- BEREICHE -->
+
+                <div class="progress-section">
+
+                    <div class="progress-title">
+                        Stand der einzelnen Arbeitsbereiche
+                    </div>
+
+
+                    <div class="progress-grid">
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Forschungsarbeiten
+                                </span>
+
+                                <span class="progress-percent">
+                                    82 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:82%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Entwicklung
+                                </span>
+
+                                <span class="progress-percent">
+                                    68 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:68%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Feldversuche
+                                </span>
+
+                                <span class="progress-percent">
+                                    55 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:55%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Transfer
+                                </span>
+
+                                <span class="progress-percent">
+                                    35 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:35%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <div class="milestone">
 
-                    <div class="milestone-dot"></div>
+                <!-- MEILENSTEINE -->
 
-                    <strong>Prototyp</strong>
-                    <span>Q4 2025 · abgeschlossen</span>
+                <div class="milestone-section">
+
+                    <div class="milestone-title">
+                        Meilensteine
+                    </div>
+
+
+                    <div class="milestones">
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Projektstart
+                            </strong>
+
+                            <span>
+                                Q1 2025 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Prototyp
+                            </strong>
+
+                            <span>
+                                Q4 2025 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Feldtest
+                            </strong>
+
+                            <span>
+                                Q3 2026 · aktuell
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone future">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Demonstrator
+                            </strong>
+
+                            <span>
+                                Q2 2027 · geplant
+                            </span>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <div class="milestone">
 
-                    <div class="milestone-dot"></div>
+                <!-- FOOTER -->
 
-                    <strong>Feldtest</strong>
-                    <span>Q3 2026 · aktuell</span>
+                <div class="project-footer">
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Sensorik
+                        </span>
+
+                        <span class="tag">
+                            Datenanalyse
+                        </span>
+
+                        <span class="tag">
+                            Wasserqualität
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://example.com"
+                        target="_blank"
+                        rel="noopener"
+                        class="project-link">
+
+                        Projekt-Homepage ↗
+
+                    </a>
 
                 </div>
-
-
-                <div class="milestone future">
-
-                    <div class="milestone-dot"></div>
-
-                    <strong>Demonstrator</strong>
-                    <span>Q2 2027 · geplant</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="project-footer">
-
-                <div class="project-tags">
-                    <span class="tag">Sensorik</span>
-                    <span class="tag">KI</span>
-                    <span class="tag">Wasserqualität</span>
-                </div>
-
-                <a
-                    href="https://example.com"
-                    target="_blank"
-                    class="project-link">
-
-                    Projekt-Homepage ↗
-
-                </a>
 
             </div>
 
@@ -1366,142 +2213,327 @@ footer {
 
 
 
-        <!-- PROJECT 02 -->
+        <!-- =================================================
+             PROJECT 2
+             ================================================= -->
 
         <article class="project">
 
-            <div class="project-top">
+            <div class="project-main">
 
-                <div class="project-logo">
-                    HY
-                </div>
 
-                <div>
+                <div class="project-header">
 
-                    <h3 class="project-title">
-                        HYDRO-OPT
-                    </h3>
+                    <div class="project-logo">
 
-                    <div class="project-meta">
-                        01.04.2024 – 30.09.2026 · Verbundprojekt
+                        HY
+
+                        <!--
+                        <img
+                            src="images/hydro-opt-logo.png"
+                            alt="HYDRO-OPT Logo">
+                        -->
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 class="project-title">
+                            HYDRO-OPT
+                        </h3>
+
+                        <div class="project-meta">
+
+                            01.04.2024 – 30.09.2026
+                            · Verbundprojekt
+
+                        </div>
+
+                        <div class="project-partners">
+
+                            Beispiel · Forschung · Industriepartner
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status status-endphase">
+
+                        Endphase
+
                     </div>
 
                 </div>
 
-                <div class="status status-critical">
-                    Endphase
-                </div>
-
-            </div>
 
 
-            <p class="project-description">
-                Digitale Modellierung und Optimierung von
-                Wasserverteilungssystemen mit dem Ziel,
-                Ressourcen effizienter zu nutzen und
-                Betriebsabläufe vorausschauend zu steuern.
-            </p>
+                <div class="project-image">
+
+                    <!--
+                    <img
+                        src="images/hydro-opt.jpg"
+                        alt="Projekt HYDRO-OPT">
+                    -->
 
 
-            <div class="progress-area">
+                    <div class="image-placeholder">
 
-                <div class="progress-header">
-                    <span>Aktueller Projektstand</span>
-                    <span class="progress-value">87 %</span>
-                </div>
+                        <div class="image-placeholder-symbol">
+                            ◫
+                        </div>
 
-                <div class="progress">
+                        <strong>
+                            Bild aus dem Vorhaben
+                        </strong>
 
-                    <div
-                        class="progress-bar"
-                        style="width:87%">
+                        <span>
+                            Platzhalter für Projektfoto
+                        </span>
+
                     </div>
 
                 </div>
 
-            </div>
 
 
-            <div class="timeline">
+                <p class="project-description">
 
-                <span class="timeline-label">
-                    Projektlaufzeit
-                </span>
+                    HYDRO-OPT entwickelt digitale Methoden zur
+                    Modellierung und Optimierung von
+                    Wasserverteilungssystemen. Im Mittelpunkt
+                    stehen Simulation, Prognose und die Übertragung
+                    wissenschaftlicher Erkenntnisse in die Praxis.
 
-                <div class="timeline-track">
+                </p>
 
-                    <div
-                        class="timeline-progress"
-                        style="width:87%">
+
+
+                <div class="progress-section">
+
+                    <div class="progress-title">
+                        Stand der einzelnen Arbeitsbereiche
+                    </div>
+
+
+                    <div class="progress-grid">
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Forschungsarbeiten
+                                </span>
+
+                                <span class="progress-percent">
+                                    100 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:100%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Modellierung
+                                </span>
+
+                                <span class="progress-percent">
+                                    95 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:95%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Validierung
+                                </span>
+
+                                <span class="progress-percent">
+                                    88 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:88%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Transfer
+                                </span>
+
+                                <span class="progress-percent">
+                                    72 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:72%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
 
 
-            <div class="milestones">
+                <div class="milestone-section">
 
-                <div class="milestone">
+                    <div class="milestone-title">
+                        Meilensteine
+                    </div>
 
-                    <div class="milestone-dot"></div>
 
-                    <strong>Modellierung</strong>
-                    <span>Q3 2024 · abgeschlossen</span>
+                    <div class="milestones">
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Modellierung
+                            </strong>
+
+                            <span>
+                                Q3 2024 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Simulation
+                            </strong>
+
+                            <span>
+                                Q2 2025 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Validierung
+                            </strong>
+
+                            <span>
+                                Q1 2026 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Transfer
+                            </strong>
+
+                            <span>
+                                Q3 2026 · aktuell
+                            </span>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <div class="milestone">
 
-                    <div class="milestone-dot"></div>
+                <div class="project-footer">
 
-                    <strong>Simulation</strong>
-                    <span>Q2 2025 · abgeschlossen</span>
+                    <div class="tags">
 
-                </div>
+                        <span class="tag">
+                            Modellierung
+                        </span>
 
+                        <span class="tag">
+                            Simulation
+                        </span>
 
-                <div class="milestone">
+                        <span class="tag">
+                            Digital Twin
+                        </span>
 
-                    <div class="milestone-dot"></div>
-
-                    <strong>Validierung</strong>
-                    <span>Q1 2026 · abgeschlossen</span>
-
-                </div>
-
-
-                <div class="milestone">
-
-                    <div class="milestone-dot"></div>
-
-                    <strong>Transfer</strong>
-                    <span>Q3 2026 · aktuell</span>
-
-                </div>
-
-            </div>
+                    </div>
 
 
-            <div class="project-footer">
+                    <a
+                        href="https://example.com"
+                        target="_blank"
+                        rel="noopener"
+                        class="project-link">
 
-                <div class="project-tags">
+                        Projekt-Homepage ↗
 
-                    <span class="tag">Modellierung</span>
-                    <span class="tag">Simulation</span>
-                    <span class="tag">Digital Twin</span>
+                    </a>
 
                 </div>
-
-                <a
-                    href="https://example.com"
-                    target="_blank"
-                    class="project-link">
-
-                    Projekt-Homepage ↗
-
-                </a>
 
             </div>
 
@@ -1509,141 +2541,639 @@ footer {
 
 
 
-        <!-- PROJECT 03 -->
+        <!-- =================================================
+             PROJECT 3
+             ================================================= -->
 
         <article class="project">
 
-            <div class="project-top">
+            <div class="project-main">
 
-                <div class="project-logo">
-                    EC
-                </div>
 
-                <div>
+                <div class="project-header">
 
-                    <h3 class="project-title">
-                        ECOFLOW
-                    </h3>
+                    <div class="project-logo">
 
-                    <div class="project-meta">
-                        01.01.2023 – 31.12.2025 · Forschungsprojekt
+                        EC
+
+                        <!--
+                        <img
+                            src="images/ecoflow-logo.png"
+                            alt="ECOFLOW Logo">
+                        -->
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 class="project-title">
+                            ECOFLOW
+                        </h3>
+
+                        <div class="project-meta">
+
+                            01.01.2023 – 31.12.2025
+                            · Forschungsprojekt
+
+                        </div>
+
+                        <div class="project-partners">
+
+                            Beispiel · Universität · Praxispartner
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status status-complete">
+
+                        Abgeschlossen
+
                     </div>
 
                 </div>
 
-                <div class="status status-complete">
-                    Abgeschlossen
-                </div>
-
-            </div>
 
 
-            <p class="project-description">
-                Untersuchung nachhaltiger Betriebsstrategien
-                für wassertechnische Anlagen und Entwicklung
-                eines praxisorientierten Bewertungssystems.
-            </p>
+                <div class="project-image">
+
+                    <!--
+                    <img
+                        src="images/ecoflow.jpg"
+                        alt="Projekt ECOFLOW">
+                    -->
 
 
-            <div class="progress-area">
+                    <div class="image-placeholder">
 
-                <div class="progress-header">
-                    <span>Projektstand</span>
-                    <span class="progress-value">100 %</span>
-                </div>
+                        <div class="image-placeholder-symbol">
+                            ◫
+                        </div>
 
-                <div class="progress">
+                        <strong>
+                            Bild aus dem Vorhaben
+                        </strong>
 
-                    <div
-                        class="progress-bar"
-                        style="width:100%">
+                        <span>
+                            Platzhalter für Projektfoto
+                        </span>
+
                     </div>
 
                 </div>
 
-            </div>
 
 
-            <div class="timeline">
+                <p class="project-description">
 
-                <span class="timeline-label">
-                    Projektlaufzeit
-                </span>
+                    ECOFLOW beschäftigte sich mit nachhaltigen
+                    Betriebsstrategien für wassertechnische Anlagen.
+                    Neben der wissenschaftlichen Untersuchung wurde
+                    ein praxisorientiertes Bewertungssystem entwickelt.
 
-                <div class="timeline-track">
+                </p>
 
-                    <div
-                        class="timeline-progress"
-                        style="width:100%">
+
+
+                <div class="progress-section">
+
+                    <div class="progress-title">
+                        Stand der einzelnen Arbeitsbereiche
+                    </div>
+
+
+                    <div class="progress-grid">
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Forschungsarbeiten
+                                </span>
+
+                                <span class="progress-percent">
+                                    100 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:100%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Entwicklung
+                                </span>
+
+                                <span class="progress-percent">
+                                    100 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:100%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Demonstration
+                                </span>
+
+                                <span class="progress-percent">
+                                    100 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:100%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Transfer
+                                </span>
+
+                                <span class="progress-percent">
+                                    100 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:100%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
 
+
+
+                <div class="milestone-section">
+
+                    <div class="milestone-title">
+                        Meilensteine
+                    </div>
+
+
+                    <div class="milestones">
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Grundlagen
+                            </strong>
+
+                            <span>
+                                2023 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Entwicklung
+                            </strong>
+
+                            <span>
+                                2024 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Demonstrator
+                            </strong>
+
+                            <span>
+                                2025 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Projektabschluss
+                            </strong>
+
+                            <span>
+                                12/2025 · abgeschlossen
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-footer">
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Nachhaltigkeit
+                        </span>
+
+                        <span class="tag">
+                            Energie
+                        </span>
+
+                        <span class="tag">
+                            Transfer
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://example.com"
+                        target="_blank"
+                        rel="noopener"
+                        class="project-link">
+
+                        Projekt-Homepage ↗
+
+                    </a>
+
+                </div>
+
             </div>
 
+        </article>
 
-            <div class="milestones">
 
-                <div class="milestone">
 
-                    <div class="milestone-dot"></div>
+        <!-- =================================================
+             PROJECT 4
+             ================================================= -->
 
-                    <strong>Forschung</strong>
-                    <span>2023 · abgeschlossen</span>
+        <article class="project">
+
+            <div class="project-main">
+
+
+                <div class="project-header">
+
+                    <div class="project-logo">
+
+                        BT
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 class="project-title">
+                            BLUE-TECH
+                        </h3>
+
+                        <div class="project-meta">
+
+                            01.06.2026 – 31.03.2029
+                            · Verbundforschung
+
+                        </div>
+
+                        <div class="project-partners">
+
+                            Beispiel · Forschung · Technologiepartner
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status status-active">
+
+                        In Bearbeitung
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-image">
+
+                    <div class="image-placeholder">
+
+                        <div class="image-placeholder-symbol">
+                            ◫
+                        </div>
+
+                        <strong>
+                            Bild aus dem Vorhaben
+                        </strong>
+
+                        <span>
+                            Platzhalter für Labor- oder Feldaufnahme
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <div class="milestone">
 
-                    <div class="milestone-dot"></div>
+                <p class="project-description">
 
-                    <strong>Entwicklung</strong>
-                    <span>2024 · abgeschlossen</span>
+                    BLUE-TECH untersucht neue technologische Ansätze
+                    für ressourceneffiziente wasserwirtschaftliche
+                    Systeme und deren praktische Erprobung.
+
+                </p>
+
+
+
+                <div class="progress-section">
+
+                    <div class="progress-title">
+                        Stand der einzelnen Arbeitsbereiche
+                    </div>
+
+
+                    <div class="progress-grid">
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Forschungsarbeiten
+                                </span>
+
+                                <span class="progress-percent">
+                                    42 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:42%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Technologieentwicklung
+                                </span>
+
+                                <span class="progress-percent">
+                                    31 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:31%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Erprobung
+                                </span>
+
+                                <span class="progress-percent">
+                                    18 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:18%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Transfer
+                                </span>
+
+                                <span class="progress-percent">
+                                    12 %
+                                </span>
+
+                            </div>
+
+                            <div class="progress-track">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:12%">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <div class="milestone">
 
-                    <div class="milestone-dot"></div>
+                <div class="milestone-section">
 
-                    <strong>Demonstrator</strong>
-                    <span>2025 · abgeschlossen</span>
+                    <div class="milestone-title">
+                        Meilensteine
+                    </div>
+
+
+                    <div class="milestones">
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Projektstart
+                            </strong>
+
+                            <span>
+                                Q2 2026 · abgeschlossen
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Konzeptphase
+                            </strong>
+
+                            <span>
+                                Q4 2026 · aktuell
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone future">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Prototyp
+                            </strong>
+
+                            <span>
+                                Q2 2027 · geplant
+                            </span>
+
+                        </div>
+
+
+                        <div class="milestone future">
+
+                            <div class="milestone-dot"></div>
+
+                            <strong>
+                                Feldtest
+                            </strong>
+
+                            <span>
+                                2028 · geplant
+                            </span>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <div class="milestone">
 
-                    <div class="milestone-dot"></div>
+                <div class="project-footer">
 
-                    <strong>Transfer</strong>
-                    <span>2025 · abgeschlossen</span>
+                    <div class="tags">
+
+                        <span class="tag">
+                            Technologie
+                        </span>
+
+                        <span class="tag">
+                            Innovation
+                        </span>
+
+                        <span class="tag">
+                            Wasser
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://example.com"
+                        target="_blank"
+                        rel="noopener"
+                        class="project-link">
+
+                        Projekt-Homepage ↗
+
+                    </a>
 
                 </div>
-
-            </div>
-
-
-            <div class="project-footer">
-
-                <div class="project-tags">
-
-                    <span class="tag">Nachhaltigkeit</span>
-                    <span class="tag">Energie</span>
-                    <span class="tag">Transfer</span>
-
-                </div>
-
-                <a
-                    href="https://example.com"
-                    target="_blank"
-                    class="project-link">
-
-                    Projekt-Homepage ↗
-
-                </a>
 
             </div>
 
@@ -1653,175 +3183,6 @@ footer {
 
 </section>
 
-
-<!-- =====================================================
-     CURRENT STATUS
-     ===================================================== -->
-
-<section id="status">
-
-    <div class="section-header">
-
-        <div>
-
-            <div class="section-kicker">
-                Live Overview
-            </div>
-
-            <h2 class="section-title">
-                Wo stehen wir?
-            </h2>
-
-        </div>
-
-        <p class="section-description">
-            Der aktuelle Stand unserer Forschungsaktivitäten
-            auf einen Blick.
-        </p>
-
-    </div>
-
-
-    <div class="current-state">
-
-
-        <div class="state-card">
-
-            <div class="state-number">
-                72%
-            </div>
-
-            <h3>
-                durchschnittlicher Projektfortschritt
-            </h3>
-
-            <p>
-                Unsere derzeit aktiven Projekte befinden sich
-                überwiegend in der Entwicklungs- und
-                Demonstrationsphase.
-            </p>
-
-        </div>
-
-
-        <div class="state-list">
-
-            <div class="state-item">
-
-                <div class="state-icon">✓</div>
-
-                <div>
-                    <strong>Forschung & Konzept</strong>
-                    <span>Grundlagen und Fragestellungen</span>
-                </div>
-
-                <b>100%</b>
-
-            </div>
-
-
-            <div class="state-item">
-
-                <div class="state-icon">◆</div>
-
-                <div>
-                    <strong>Entwicklung</strong>
-                    <span>Modelle, Prototypen und Methoden</span>
-                </div>
-
-                <b>84%</b>
-
-            </div>
-
-
-            <div class="state-item">
-
-                <div class="state-icon">◉</div>
-
-                <div>
-                    <strong>Demonstration</strong>
-                    <span>Erprobung unter realen Bedingungen</span>
-                </div>
-
-                <b>63%</b>
-
-            </div>
-
-
-            <div class="state-item">
-
-                <div class="state-icon">↗</div>
-
-                <div>
-                    <strong>Transfer</strong>
-                    <span>Überführung in die Praxis</span>
-                </div>
-
-                <b>41%</b>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     KEY NUMBERS
-     ===================================================== -->
-
-<section>
-
-    <div class="numbers">
-
-        <div class="number-card">
-
-            <div class="number">06</div>
-
-            <div class="number-label">
-                laufende Projekte
-            </div>
-
-        </div>
-
-
-        <div class="number-card">
-
-            <div class="number">14</div>
-
-            <div class="number-label">
-                Forschungspartner
-            </div>
-
-        </div>
-
-
-        <div class="number-card">
-
-            <div class="number">23</div>
-
-            <div class="number-label">
-                wissenschaftliche Beiträge
-            </div>
-
-        </div>
-
-
-        <div class="number-card">
-
-            <div class="number">08</div>
-
-            <div class="number-label">
-                abgeschlossene Projekte
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
 
 
 <!-- =====================================================
@@ -1835,7 +3196,7 @@ footer {
         <div>
 
             <div class="section-kicker">
-                Über uns
+                Forschungsgruppe
             </div>
 
             <h2 class="section-title">
@@ -1844,56 +3205,78 @@ footer {
 
         </div>
 
+
         <p class="section-description">
-            Wir verbinden wissenschaftliche Exzellenz mit
-            praktischer Anwendung und gesellschaftlicher Relevanz.
+
+            Wir verbinden wissenschaftliche Fragestellungen,
+            technische Entwicklung und den Transfer in
+            konkrete Anwendungen.
+
         </p>
 
     </div>
 
 
-    <div class="research-grid">
 
-        <article class="research-card">
+    <div class="about-grid">
 
-            <div class="icon">◎</div>
 
-            <h3>Interdisziplinär</h3>
+        <article class="about-card">
+
+            <div class="about-icon">
+                ◎
+            </div>
+
+            <h3>
+                Forschung
+            </h3>
 
             <p>
-                Wir verbinden Naturwissenschaften,
-                Ingenieurwesen, Datenwissenschaft und
-                angewandte Forschung.
+
+                Grundlagenorientierte und angewandte
+                Forschungsarbeiten bilden die Basis unserer
+                Vorhaben.
+
             </p>
 
         </article>
 
 
-        <article class="research-card">
+        <article class="about-card">
 
-            <div class="icon">↗</div>
+            <div class="about-icon">
+                ◇
+            </div>
 
-            <h3>Praxisorientiert</h3>
+            <h3>
+                Entwicklung
+            </h3>
 
             <p>
-                Forschung endet für uns nicht bei der
-                Publikation. Wir entwickeln Lösungen,
-                die unter realen Bedingungen funktionieren.
+
+                Aus wissenschaftlichen Erkenntnissen entstehen
+                Modelle, Methoden, Prototypen und Demonstratoren.
+
             </p>
 
         </article>
 
 
-        <article class="research-card">
+        <article class="about-card">
 
-            <div class="icon">∞</div>
+            <div class="about-icon">
+                ↗
+            </div>
 
-            <h3>Offen & transparent</h3>
+            <h3>
+                Transfer
+            </h3>
 
             <p>
-                Wir machen Fortschritte, Ergebnisse und
-                Forschungsaktivitäten sichtbar und
-                zugänglich.
+
+                Wir bringen Forschungsergebnisse gemeinsam mit
+                Partnern in die Praxis und in neue Anwendungen.
+
             </p>
 
         </article>
@@ -1901,6 +3284,7 @@ footer {
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -1918,7 +3302,7 @@ footer {
             </div>
 
             <div>
-                Research · Innovation · Water
+                Research · Development · Transfer
             </div>
 
         </div>
@@ -1946,6 +3330,7 @@ footer {
     </div>
 
 </footer>
+
 
 </body>
 </html>
