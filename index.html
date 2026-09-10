@@ -1,40 +1,42 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071a2d">
-<title>AQUA — Project Deadline Control</title>
+
+<title>AQUA Research Group</title>
+
+<meta name="description"
+      content="Forschungsprojekte, Entwicklungen und aktuelle Meilensteine der AQUA Research Group.">
 
 <style>
+/* =========================================================
+   AQUA RESEARCH GROUP
+   Single-file public research portfolio
+   ========================================================= */
+
 :root {
-    --bg: #061321;
-    --bg-2: #091d31;
-    --panel: rgba(11, 37, 59, .72);
-    --panel-solid: #0b263e;
-    --panel-light: rgba(19, 57, 86, .72);
+    --navy: #061426;
+    --navy-2: #0a1d32;
+    --blue: #087ea4;
+    --cyan: #25c4df;
+    --cyan-light: #8be9f5;
+    --white: #f6fbfd;
+    --muted: #8da8b7;
+    --line: rgba(255,255,255,.09);
 
-    --blue-1: #39bdf8;
-    --blue-2: #168cff;
-    --cyan: #39e7dc;
-    --deep: #071a2d;
+    --green: #35d39a;
+    --yellow: #f4c95d;
+    --orange: #f28c5b;
 
-    --text: #eef8ff;
-    --muted: #83a5bd;
-    --muted-2: #5f829b;
-
-    --success: #39e58c;
-    --warning: #ffc857;
-    --danger: #ff637d;
-
-    --border: rgba(117, 198, 255, .14);
-    --shadow: 0 25px 80px rgba(0,0,0,.35);
-
-    --radius: 22px;
+    --max: 1220px;
 }
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -42,8 +44,6 @@ html {
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
     font-family:
         Inter,
         ui-sans-serif,
@@ -53,1183 +53,981 @@ body {
         "Segoe UI",
         sans-serif;
 
-    color: var(--text);
-
     background:
-        radial-gradient(circle at 10% 10%, rgba(20,142,255,.15), transparent 28%),
-        radial-gradient(circle at 90% 15%, rgba(43,224,215,.10), transparent 25%),
-        radial-gradient(circle at 50% 100%, rgba(13,91,170,.12), transparent 35%),
-        linear-gradient(135deg, #04101d 0%, #071a2d 45%, #061321 100%);
+        radial-gradient(circle at 20% 0%, rgba(37,196,223,.10), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(8,126,164,.14), transparent 30%),
+        var(--navy);
 
-    overflow-x: hidden;
+    color: var(--white);
+    line-height: 1.6;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: .22;
-
-    background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-
-    background-size: 48px 48px;
-    mask-image: linear-gradient(to bottom, black, transparent 90%);
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-/* ---------------------------------------
-   APP
---------------------------------------- */
-
-.app {
-    display: flex;
-    min-height: 100vh;
+img {
+    max-width: 100%;
+    display: block;
 }
 
-/* ---------------------------------------
-   SIDEBAR
---------------------------------------- */
+/* ---------------------------------------------------------
+   Navigation
+   --------------------------------------------------------- */
 
-.sidebar {
-    width: 260px;
-    min-height: 100vh;
-    padding: 26px 18px;
-
-    position: fixed;
-    left: 0;
+.navbar {
+    position: sticky;
     top: 0;
-    bottom: 0;
+    z-index: 100;
 
-    z-index: 20;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    background: rgba(4, 19, 32, .82);
-    border-right: 1px solid var(--border);
-    backdrop-filter: blur(22px);
+    background: rgba(6,20,38,.78);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+    max-width: var(--max);
+    margin: auto;
+    height: 76px;
 
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
 }
 
 .brand {
     display: flex;
     align-items: center;
     gap: 13px;
-    padding: 4px 8px 34px;
+
+    font-weight: 800;
+    letter-spacing: .08em;
 }
 
 .brand-mark {
-    width: 43px;
-    height: 43px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        linear-gradient(135deg, var(--cyan), var(--blue));
+
+    box-shadow:
+        0 8px 30px rgba(37,196,223,.20);
+
+    font-size: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+/* ---------------------------------------------------------
+   Hero
+   --------------------------------------------------------- */
+
+.hero {
+    max-width: var(--max);
+    margin: auto;
+
+    min-height: 590px;
+
+    padding: 110px 24px 80px;
+
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items: center;
+    gap: 80px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 7px 12px;
+
+    border: 1px solid rgba(139,233,245,.2);
+    border-radius: 999px;
+
+    color: var(--cyan-light);
+    background: rgba(37,196,223,.06);
+
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+}
+
+.hero h1 {
+    margin-top: 24px;
+
+    font-size: clamp(44px, 6vw, 78px);
+    line-height: .98;
+    letter-spacing: -.055em;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+}
+
+.hero-text {
+    margin-top: 25px;
+
+    max-width: 680px;
+
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.hero-actions {
+    margin-top: 34px;
+
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.button {
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+.button-primary {
+    color: #03121d;
+
+    background: var(--cyan);
+
+    box-shadow:
+        0 10px 30px rgba(37,196,223,.18);
+}
+
+.button-primary:hover {
+    transform: translateY(-2px);
+}
+
+.button-secondary {
+    border: 1px solid var(--line);
+    color: var(--white);
+}
+
+.button-secondary:hover {
+    background: rgba(255,255,255,.05);
+}
+
+/* ---------------------------------------------------------
+   Hero visual
+   --------------------------------------------------------- */
+
+.hero-visual {
+    position: relative;
+    min-height: 390px;
+}
+
+.orbit {
+    position: absolute;
+    inset: 20px;
+
+    border: 1px solid rgba(37,196,223,.15);
+    border-radius: 50%;
+}
+
+.orbit::before,
+.orbit::after {
+    content: "";
+
+    position: absolute;
+    inset: 50px;
+
+    border: 1px solid rgba(37,196,223,.10);
+    border-radius: 50%;
+}
+
+.water-core {
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 35% 30%,
+        #b6f5fb 0%,
+        var(--cyan) 18%,
+        var(--blue) 55%,
+        #05314c 100%);
+
+    box-shadow:
+        0 0 90px rgba(37,196,223,.30),
+        inset -20px -25px 40px rgba(0,0,0,.25);
+
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-12px); }
+}
+
+.stat-card {
+    position: absolute;
+
+    padding: 17px 19px;
+
+    border-radius: 16px;
+
+    background: rgba(13,36,56,.72);
+    border: 1px solid var(--line);
+
+    backdrop-filter: blur(14px);
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.2);
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 25px;
+}
+
+.stat-card small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.stat-1 {
+    top: 30px;
+    right: 0;
+}
+
+.stat-2 {
+    bottom: 35px;
+    left: 0;
+}
+
+.stat-3 {
+    right: 30px;
+    bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   Sections
+   --------------------------------------------------------- */
+
+section {
+    max-width: var(--max);
+    margin: auto;
+    padding: 85px 24px;
+}
+
+.section-header {
+    margin-bottom: 42px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+}
+
+.section-kicker {
+    color: var(--cyan);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-weight: 800;
+}
+
+.section-title {
+    margin-top: 8px;
+
+    font-size: clamp(30px, 4vw, 46px);
+    letter-spacing: -.04em;
+}
+
+.section-description {
+    max-width: 520px;
+    color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   Research areas
+   --------------------------------------------------------- */
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+
+.research-card {
+    padding: 28px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.018)
+    );
+
+    border: 1px solid var(--line);
+
+    transition: .25s;
+}
+
+.research-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(37,196,223,.3);
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
 
     border-radius: 14px;
 
     display: grid;
     place-items: center;
 
-    background:
-        linear-gradient(145deg, rgba(55,222,224,.25), rgba(17,116,255,.38));
+    background: rgba(37,196,223,.10);
 
-    border: 1px solid rgba(87,221,255,.28);
+    color: var(--cyan);
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        0 10px 35px rgba(14,142,255,.18);
+    font-size: 21px;
 }
 
-.brand-mark svg {
-    width: 25px;
-    height: 25px;
-}
-
-.brand-name {
+.research-card h3 {
+    margin-top: 20px;
     font-size: 19px;
-    font-weight: 800;
-    letter-spacing: .12em;
 }
 
-.brand-sub {
-    display: block;
-    margin-top: 2px;
-
+.research-card p {
+    margin-top: 9px;
     color: var(--muted);
-    font-size: 9px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
+    font-size: 14px;
 }
 
-.nav-title {
-    padding: 0 11px 10px;
+/* ---------------------------------------------------------
+   Projects
+   --------------------------------------------------------- */
 
-    color: var(--muted-2);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+.projects {
+    display: grid;
+    gap: 25px;
 }
 
-.nav {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
+.project {
+    position: relative;
 
-.nav button {
-    width: 100%;
+    padding: 30px;
 
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    padding: 12px 13px;
-
-    border: 0;
-    border-radius: 13px;
-
-    color: var(--muted);
-    background: transparent;
-
-    font: inherit;
-    font-size: 13px;
-    font-weight: 600;
-
-    cursor: pointer;
-    text-align: left;
-
-    transition: .2s ease;
-}
-
-.nav button:hover {
-    color: var(--text);
-    background: rgba(49,177,255,.07);
-}
-
-.nav button.active {
-    color: #fff;
+    border-radius: 24px;
 
     background:
-        linear-gradient(100deg, rgba(29,145,255,.18), rgba(47,222,216,.06));
+        linear-gradient(
+            140deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
 
-    box-shadow: inset 0 0 0 1px rgba(66,189,255,.12);
+    border: 1px solid var(--line);
+
+    overflow: hidden;
 }
 
-.nav-icon {
-    width: 18px;
-    height: 18px;
+.project::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+}
+
+.project-top {
+    display: grid;
+    grid-template-columns: 85px 1fr auto;
+    gap: 22px;
+    align-items: start;
+}
+
+.project-logo {
+    width: 75px;
+    height: 75px;
+
+    border-radius: 18px;
+
     display: grid;
     place-items: center;
-    opacity: .9;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37,196,223,.15),
+            rgba(8,126,164,.25)
+        );
+
+    border: 1px solid rgba(37,196,223,.15);
+
+    color: var(--cyan-light);
+
+    font-size: 27px;
+    font-weight: 800;
 }
 
-.sidebar-bottom {
-    margin-top: auto;
+.project-title {
+    font-size: 25px;
+    letter-spacing: -.02em;
 }
 
-.system-card {
-    padding: 15px;
-
-    border-radius: 17px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(31,126,194,.13),
-        rgba(22,58,88,.18)
-    );
-
-    border: 1px solid var(--border);
-}
-
-.system-label {
+.project-meta {
+    margin-top: 5px;
     color: var(--muted);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .12em;
+    font-size: 13px;
 }
 
-.system-status {
-    display: flex;
+.status {
+    display: inline-flex;
     align-items: center;
     gap: 7px;
-    margin-top: 8px;
 
-    font-size: 12px;
-    font-weight: 600;
+    padding: 7px 11px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
 }
 
-.status-dot {
+.status::before {
+    content: "";
+
     width: 7px;
     height: 7px;
+
     border-radius: 50%;
-    background: var(--success);
-    box-shadow: 0 0 12px var(--success);
 }
 
-/* ---------------------------------------
-   MAIN
---------------------------------------- */
-
-.main {
-    width: calc(100% - 260px);
-    margin-left: 260px;
-
-    padding: 28px 34px 60px;
-
-    position: relative;
+.status-active {
+    background: rgba(53,211,154,.10);
+    color: var(--green);
 }
 
-.topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-
-    margin-bottom: 28px;
+.status-active::before {
+    background: var(--green);
 }
 
-.page-eyebrow {
+.status-critical {
+    background: rgba(242,140,91,.10);
+    color: var(--orange);
+}
+
+.status-critical::before {
+    background: var(--orange);
+}
+
+.status-complete {
+    background: rgba(37,196,223,.10);
     color: var(--cyan);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .2em;
-    text-transform: uppercase;
 }
 
-.page-title {
-    margin: 5px 0 0;
-
-    font-size: clamp(28px, 3vw, 43px);
-    line-height: 1.05;
-    letter-spacing: -.045em;
+.status-complete::before {
+    background: var(--cyan);
 }
 
-.page-description {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 13px;
+.project-description {
+    margin-top: 22px;
+
+    max-width: 900px;
+
+    color: #b5c9d3;
+    font-size: 15px;
 }
 
-.top-actions {
+/* ---------------------------------------------------------
+   Progress
+   --------------------------------------------------------- */
+
+.progress-area {
+    margin-top: 27px;
+}
+
+.progress-header {
     display: flex;
-    align-items: center;
-    gap: 10px;
-}
+    justify-content: space-between;
 
-/* ---------------------------------------
-   BUTTONS
---------------------------------------- */
+    margin-bottom: 9px;
 
-.btn {
-    border: 0;
-    border-radius: 13px;
-
-    padding: 11px 16px;
-
-    color: var(--text);
-    background: rgba(255,255,255,.05);
-
-    border: 1px solid var(--border);
-
-    font: inherit;
     font-size: 12px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: .2s ease;
-}
-
-.btn:hover {
-    transform: translateY(-1px);
-    background: rgba(255,255,255,.08);
-}
-
-.btn-primary {
-    color: white;
-
-    background:
-        linear-gradient(135deg, #159cff, #0877ef);
-
-    border-color: rgba(94,205,255,.3);
-
-    box-shadow:
-        0 10px 30px rgba(10,126,255,.2),
-        inset 0 1px 0 rgba(255,255,255,.15);
-}
-
-.btn-primary:hover {
-    box-shadow:
-        0 14px 40px rgba(10,126,255,.3),
-        inset 0 1px 0 rgba(255,255,255,.18);
-}
-
-.btn-danger {
-    color: #ff8799;
-}
-
-.btn-small {
-    padding: 8px 11px;
-    font-size: 11px;
-}
-
-/* ---------------------------------------
-   KPI CARDS
---------------------------------------- */
-
-.kpis {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-
-    margin-bottom: 18px;
-}
-
-.kpi {
-    min-height: 135px;
-    padding: 20px;
-
-    position: relative;
-    overflow: hidden;
-
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(15,49,75,.76),
-            rgba(7,27,45,.72)
-        );
-
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(18px);
-}
-
-.kpi::after {
-    content: "";
-    position: absolute;
-
-    width: 120px;
-    height: 120px;
-
-    right: -55px;
-    bottom: -65px;
-
-    border-radius: 50%;
-
-    background: radial-gradient(circle, rgba(41,200,255,.17), transparent 65%);
-}
-
-.kpi-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.kpi-label {
     color: var(--muted);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .06em;
-    text-transform: uppercase;
 }
 
-.kpi-icon {
-    width: 30px;
-    height: 30px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 10px;
-
-    background: rgba(42,178,255,.09);
-    color: var(--blue-1);
-}
-
-.kpi-value {
-    margin-top: 18px;
-
-    font-size: 34px;
-    line-height: 1;
-
+.progress-value {
+    color: var(--cyan-light);
     font-weight: 800;
-    letter-spacing: -.04em;
 }
 
-.kpi-meta {
-    margin-top: 9px;
+.progress {
+    height: 8px;
 
-    color: var(--muted-2);
-    font-size: 10px;
-}
+    border-radius: 999px;
 
-.kpi-danger .kpi-value {
-    color: var(--danger);
-}
-
-.kpi-warning .kpi-value {
-    color: var(--warning);
-}
-
-.kpi-success .kpi-value {
-    color: var(--success);
-}
-
-/* ---------------------------------------
-   GRID
---------------------------------------- */
-
-.content-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr);
-    gap: 18px;
-}
-
-.panel {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(12,42,65,.75),
-            rgba(6,25,42,.78)
-        );
-
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,.07);
 
     overflow: hidden;
 }
 
-.panel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
+.progress-bar {
+    height: 100%;
 
-    padding: 19px 21px;
+    border-radius: inherit;
 
-    border-bottom: 1px solid rgba(114,188,227,.08);
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 20px rgba(37,196,223,.25);
 }
 
-.panel-title {
-    font-size: 14px;
-    font-weight: 800;
-}
-
-.panel-subtitle {
-    margin-top: 3px;
-    color: var(--muted);
-    font-size: 10px;
-}
-
-.panel-body {
-    padding: 20px;
-}
-
-/* ---------------------------------------
-   TIMELINE
---------------------------------------- */
+/* ---------------------------------------------------------
+   Timeline
+   --------------------------------------------------------- */
 
 .timeline {
-    position: relative;
-    min-height: 310px;
-
-    overflow-x: auto;
-    padding-bottom: 10px;
-}
-
-.timeline-inner {
-    min-width: 850px;
-}
-
-.timeline-head {
-    display: grid;
-    grid-template-columns: 170px 1fr;
-
-    margin-bottom: 14px;
-}
-
-.timeline-project-label {
-    color: var(--muted-2);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .12em;
-}
-
-.days {
-    display: grid;
-    grid-template-columns: repeat(14, 1fr);
-}
-
-.day {
-    text-align: center;
-
-    color: var(--muted-2);
-    font-size: 9px;
-}
-
-.day.today {
-    color: var(--cyan);
-    font-weight: 800;
-}
-
-.timeline-row {
-    display: grid;
-    grid-template-columns: 170px 1fr;
-
-    min-height: 52px;
-
-    border-top: 1px solid rgba(114,188,227,.055);
-}
-
-.timeline-name {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
-    padding-right: 15px;
-
-    color: #dcecf7;
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.timeline-avatar {
-    width: 27px;
-    height: 27px;
-    flex: 0 0 27px;
+    margin-top: 30px;
 
     display: grid;
-    place-items: center;
+    grid-template-columns: 150px 1fr;
 
-    border-radius: 9px;
+    gap: 15px;
+}
 
-    color: #d9f7ff;
-    background: linear-gradient(135deg, #0f5f94, #0c3555);
-
-    font-size: 9px;
-    font-weight: 800;
+.timeline-label {
+    color: var(--muted);
+    font-size: 12px;
 }
 
 .timeline-track {
     position: relative;
 
-    background-image:
-        linear-gradient(
+    height: 34px;
+
+    border-radius: 8px;
+
+    background:
+        repeating-linear-gradient(
             90deg,
-            rgba(98,169,211,.07) 1px,
-            transparent 1px
+            rgba(255,255,255,.035) 0,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px,
+            transparent 14.28%
         );
 
-    background-size: calc(100% / 14) 100%;
+    border: 1px solid rgba(255,255,255,.05);
 }
 
-.timeline-bar {
+.timeline-progress {
     position: absolute;
-    top: 13px;
-    height: 26px;
+    left: 0;
+    top: 0;
+    bottom: 0;
 
-    border-radius: 9px;
+    border-radius: 7px;
 
-    display: flex;
-    align-items: center;
-
-    padding: 0 10px;
-
-    min-width: 40px;
-
-    overflow: hidden;
-
-    font-size: 9px;
-    font-weight: 800;
-
-    white-space: nowrap;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8,126,164,.7),
+            rgba(37,196,223,.75)
+        );
 }
 
-.bar-safe {
-    background: linear-gradient(90deg, rgba(28,165,255,.45), rgba(44,220,213,.32));
-    border: 1px solid rgba(54,210,255,.32);
-}
+.milestones {
+    margin-top: 26px;
 
-.bar-warning {
-    background: linear-gradient(90deg, rgba(255,181,54,.35), rgba(255,200,87,.18));
-    border: 1px solid rgba(255,200,87,.3);
-}
-
-.bar-danger {
-    background: linear-gradient(90deg, rgba(255,72,104,.35), rgba(255,99,125,.17));
-    border: 1px solid rgba(255,99,125,.3);
-}
-
-.deadline-marker {
-    position: absolute;
-
-    top: 7px;
-
-    width: 2px;
-    height: 39px;
-
-    border-radius: 2px;
-
-    background: currentColor;
-
-    box-shadow: 0 0 12px currentColor;
-}
-
-.marker-safe {
-    color: var(--cyan);
-}
-
-.marker-warning {
-    color: var(--warning);
-}
-
-.marker-danger {
-    color: var(--danger);
-}
-
-/* ---------------------------------------
-   PROJECT TABLE
---------------------------------------- */
-
-.project-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.project-row {
     display: grid;
+    grid-template-columns: repeat(4,1fr);
 
-    grid-template-columns:
-        minmax(150px, 1.4fr)
-        110px
-        minmax(120px, 1fr)
-        90px
-        90px
-        90px;
-
-    gap: 15px;
-    align-items: center;
-
-    padding: 15px 20px;
-
-    border-bottom: 1px solid rgba(114,188,227,.055);
-
-    transition: .2s ease;
+    gap: 10px;
 }
 
-.project-row:hover {
-    background: rgba(31,147,221,.045);
-}
-
-.project-main {
-    min-width: 0;
-}
-
-.project-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    font-size: 12px;
-    font-weight: 750;
-}
-
-.project-owner {
-    margin-top: 4px;
-
-    color: var(--muted-2);
-    font-size: 9px;
-}
-
-.progress-wrap {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-}
-
-.progress {
-    flex: 1;
-
-    height: 6px;
-
-    overflow: hidden;
-
-    border-radius: 99px;
-
-    background: rgba(255,255,255,.07);
-}
-
-.progress > span {
-    display: block;
-    height: 100%;
-
-    border-radius: inherit;
-
-    background: linear-gradient(90deg, #118eff, #39e3d9);
-}
-
-.progress-value {
-    width: 28px;
-
-    color: var(--muted);
-    font-size: 9px;
-    text-align: right;
-}
-
-.date {
-    font-size: 10px;
-    color: #cce4f2;
-}
-
-.countdown {
-    font-size: 10px;
-    font-weight: 800;
-}
-
-.safe {
-    color: var(--success);
-}
-
-.warning {
-    color: var(--warning);
-}
-
-.danger {
-    color: var(--danger);
-}
-
-/* ---------------------------------------
-   RIGHT PANEL
---------------------------------------- */
-
-.deadline-list {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-}
-
-.deadline-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    padding: 12px;
+.milestone {
+    padding: 15px;
 
     border-radius: 14px;
 
     background: rgba(255,255,255,.025);
-    border: 1px solid rgba(255,255,255,.045);
+    border: 1px solid var(--line);
 }
 
-.deadline-line {
-    width: 3px;
-    height: 34px;
+.milestone-dot {
+    width: 9px;
+    height: 9px;
 
-    border-radius: 99px;
+    border-radius: 50%;
 
     background: var(--cyan);
+
+    box-shadow: 0 0 14px rgba(37,196,223,.5);
+
+    margin-bottom: 10px;
 }
 
-.deadline-line.warning {
-    background: var(--warning);
+.milestone.future .milestone-dot {
+    background: #4d6471;
+    box-shadow: none;
 }
 
-.deadline-line.danger {
-    background: var(--danger);
+.milestone strong {
+    display: block;
+    font-size: 13px;
 }
 
-.deadline-content {
-    flex: 1;
-    min-width: 0;
-}
-
-.deadline-project {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    font-size: 11px;
-    font-weight: 750;
-}
-
-.deadline-date {
-    margin-top: 4px;
-
+.milestone span {
+    display: block;
+    margin-top: 3px;
     color: var(--muted);
-    font-size: 9px;
-}
-
-.deadline-days {
-    font-size: 10px;
-    font-weight: 800;
-}
-
-.empty {
-    padding: 35px 20px;
-
-    color: var(--muted);
-    text-align: center;
-
-    font-size: 12px;
-}
-
-/* ---------------------------------------
-   FILTER BAR
---------------------------------------- */
-
-.filterbar {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
-    margin-bottom: 13px;
-}
-
-.search {
-    flex: 1;
-    position: relative;
-}
-
-.search input,
-.filterbar select {
-    width: 100%;
-
-    padding: 11px 13px;
-
-    color: var(--text);
-
-    background: rgba(255,255,255,.035);
-
-    border: 1px solid var(--border);
-    border-radius: 12px;
-
-    outline: none;
-
-    font: inherit;
     font-size: 11px;
 }
 
-.filterbar select {
-    width: 145px;
-}
+/* ---------------------------------------------------------
+   Project footer
+   --------------------------------------------------------- */
 
-.search input::placeholder {
-    color: var(--muted-2);
-}
+.project-footer {
+    margin-top: 28px;
+    padding-top: 20px;
 
-.search input:focus,
-.filterbar select:focus {
-    border-color: rgba(45,183,255,.45);
-    box-shadow: 0 0 0 3px rgba(32,155,255,.07);
-}
+    border-top: 1px solid var(--line);
 
-option {
-    color: #071a2d;
-}
-
-/* ---------------------------------------
-   MODAL
---------------------------------------- */
-
-.modal-backdrop {
-    position: fixed;
-    inset: 0;
-
-    z-index: 100;
-
-    display: none;
-    place-items: center;
-
-    padding: 20px;
-
-    background: rgba(1,10,18,.75);
-    backdrop-filter: blur(12px);
-}
-
-.modal-backdrop.open {
-    display: grid;
-}
-
-.modal {
-    width: min(560px, 100%);
-    max-height: 90vh;
-
-    overflow: auto;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(145deg, #0d2d48, #071b2e);
-
-    border: 1px solid rgba(101,195,255,.18);
-
-    box-shadow:
-        0 40px 120px rgba(0,0,0,.6),
-        inset 0 1px 0 rgba(255,255,255,.07);
-}
-
-.modal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 22px 23px;
-
-    border-bottom: 1px solid var(--border);
+    gap: 20px;
 }
 
-.modal-title {
-    font-size: 17px;
-    font-weight: 800;
-}
-
-.close {
-    width: 34px;
-    height: 34px;
-
-    border: 0;
-    border-radius: 10px;
-
-    color: var(--muted);
-    background: rgba(255,255,255,.05);
-
-    cursor: pointer;
-
-    font-size: 18px;
-}
-
-.form {
-    padding: 23px;
-
-    display: grid;
-    gap: 15px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 13px;
-}
-
-.field {
+.project-tags {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 7px;
 }
 
-.field.full {
-    grid-column: 1 / -1;
-}
+.tag {
+    padding: 5px 9px;
 
-.field label {
+    border-radius: 7px;
+
     color: var(--muted);
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .08em;
+
+    background: rgba(255,255,255,.035);
+
+    font-size: 11px;
 }
 
-.field input,
-.field select {
-    width: 100%;
+.project-link {
+    color: var(--cyan-light);
 
-    padding: 12px 13px;
+    font-size: 13px;
+    font-weight: 700;
+}
 
-    color: var(--text);
+.project-link:hover {
+    color: white;
+}
 
-    background: rgba(2,14,25,.55);
+/* ---------------------------------------------------------
+   Current status
+   --------------------------------------------------------- */
 
-    border: 1px solid var(--border);
-    border-radius: 12px;
+.current-state {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 20px;
+}
 
-    outline: none;
+.state-card {
+    padding: 32px;
 
-    font: inherit;
+    border-radius: 22px;
+
+    border: 1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37,196,223,.07),
+            rgba(255,255,255,.02)
+        );
+}
+
+.state-number {
+    font-size: 62px;
+    line-height: 1;
+
+    font-weight: 800;
+
+    color: var(--cyan);
+}
+
+.state-card h3 {
+    margin-top: 12px;
+    font-size: 22px;
+}
+
+.state-card p {
+    margin-top: 9px;
+    color: var(--muted);
+}
+
+.state-list {
+    display: grid;
+    gap: 10px;
+}
+
+.state-item {
+    padding: 17px;
+
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    align-items: center;
+    gap: 14px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--line);
+}
+
+.state-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(37,196,223,.08);
+
+    color: var(--cyan);
+}
+
+.state-item strong {
+    font-size: 13px;
+}
+
+.state-item span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.state-item b {
+    color: var(--cyan-light);
+    font-size: 13px;
+}
+
+/* ---------------------------------------------------------
+   Numbers
+   --------------------------------------------------------- */
+
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.number-card {
+    padding: 25px;
+
+    border-radius: 18px;
+
+    border: 1px solid var(--line);
+
+    background: rgba(255,255,255,.025);
+}
+
+.number {
+    font-size: 36px;
+    font-weight: 800;
+
+    color: var(--cyan);
+}
+
+.number-label {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+
+footer {
+    margin-top: 40px;
+
+    border-top: 1px solid var(--line);
+
+    background: rgba(0,0,0,.12);
+}
+
+.footer-inner {
+    max-width: var(--max);
+    margin: auto;
+
+    padding: 35px 24px;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    color: var(--muted);
+
     font-size: 12px;
 }
 
-.field input:focus,
-.field select:focus {
-    border-color: rgba(50,192,255,.5);
-    box-shadow: 0 0 0 3px rgba(30,155,255,.07);
+.footer-brand {
+    color: white;
+    font-weight: 800;
 }
 
-.modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
 
-    padding-top: 5px;
-}
+@media (max-width: 900px) {
 
-/* ---------------------------------------
-   TOAST
---------------------------------------- */
-
-.toast {
-    position: fixed;
-
-    right: 25px;
-    bottom: 25px;
-
-    z-index: 200;
-
-    padding: 13px 17px;
-
-    border-radius: 13px;
-
-    background: rgba(10,36,56,.94);
-
-    border: 1px solid rgba(66,196,255,.2);
-
-    box-shadow: 0 20px 50px rgba(0,0,0,.4);
-
-    font-size: 11px;
-    font-weight: 700;
-
-    transform: translateY(20px);
-    opacity: 0;
-    pointer-events: none;
-
-    transition: .25s ease;
-}
-
-.toast.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* ---------------------------------------
-   MOBILE
---------------------------------------- */
-
-.mobile-menu {
-    display: none;
-}
-
-@media (max-width: 1150px) {
-
-    .kpis {
-        grid-template-columns: repeat(2, 1fr);
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-top: 75px;
     }
 
-    .content-grid {
+    .hero-visual {
+        min-height: 320px;
+    }
+
+    .research-grid {
         grid-template-columns: 1fr;
     }
 
-    .project-row {
-        grid-template-columns:
-            minmax(160px, 1.4fr)
-            100px
-            minmax(110px, 1fr)
-            85px;
+    .current-state {
+        grid-template-columns: 1fr;
     }
 
-    .project-row > :nth-child(5),
-    .project-row > :nth-child(6) {
-        display: none;
+    .numbers {
+        grid-template-columns: repeat(2,1fr);
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 680px) {
 
-    .sidebar {
+    .nav-links {
         display: none;
     }
 
-    .main {
-        width: 100%;
-        margin-left: 0;
-
-        padding: 20px 15px 40px;
+    section {
+        padding: 65px 18px;
     }
 
-    .mobile-menu {
-        display: grid;
-        place-items: center;
-
-        width: 38px;
-        height: 38px;
-
-        border: 1px solid var(--border);
-        border-radius: 11px;
-
-        background: rgba(255,255,255,.04);
-        color: var(--text);
-
-        cursor: pointer;
+    .hero {
+        padding-left: 18px;
+        padding-right: 18px;
     }
 
-    .topbar {
+    .hero h1 {
+        font-size: 47px;
+    }
+
+    .hero-text {
+        font-size: 16px;
+    }
+
+    .project {
+        padding: 21px;
+    }
+
+    .project-top {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .project-logo {
+        width: 58px;
+        height: 58px;
+        border-radius: 14px;
+    }
+
+    .project-title {
+        font-size: 20px;
+    }
+
+    .project-top .status {
+        grid-column: 1 / -1;
+        width: fit-content;
+    }
+
+    .timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .milestones {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .project-footer {
         align-items: flex-start;
+        flex-direction: column;
     }
 
-    .top-actions .btn:not(.btn-primary) {
-        display: none;
-    }
-
-    .kpis {
+    .numbers {
         grid-template-columns: 1fr 1fr;
     }
 
-    .kpi {
-        min-height: 120px;
-    }
-
-    .kpi-value {
-        font-size: 27px;
-    }
-
-    .project-row {
-        grid-template-columns: 1fr 90px;
-    }
-
-    .project-row > :nth-child(2),
-    .project-row > :nth-child(3),
-    .project-row > :nth-child(4),
-    .project-row > :nth-child(5) {
-        display: none;
-    }
-
-    .filterbar {
-        flex-wrap: wrap;
-    }
-
-    .filterbar select {
-        width: calc(50% - 5px);
-    }
-}
-
-@media (max-width: 500px) {
-
-    .kpis {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px;
-    }
-
-    .kpi {
-        padding: 15px;
-        border-radius: 17px;
-    }
-
-    .kpi-label {
-        font-size: 9px;
-    }
-
-    .page-title {
-        font-size: 29px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .field.full {
-        grid-column: auto;
+    .footer-inner {
+        flex-direction: column;
     }
 }
 </style>
@@ -1237,1860 +1035,918 @@ option {
 
 <body>
 
-<div class="app">
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+<nav class="navbar">
+    <div class="nav-inner">
 
-        <div class="brand">
+        <a href="#" class="brand">
+            <div class="brand-mark">≈</div>
+            AQUA RESEARCH
+        </a>
 
-            <div class="brand-mark">
-                <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                        d="M12 3C12 3 5.5 10.1 5.5 14.6A6.5 6.5 0 0 0 18.5 14.6C18.5 10.1 12 3 12 3Z"
-                        stroke="currentColor"
-                        stroke-width="1.7"
-                    />
-                    <path
-                        d="M8.5 15.5C9.2 17.2 10.4 18 12.2 18"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                    />
-                </svg>
-            </div>
-
-            <div>
-                <div class="brand-name">AQUA</div>
-                <span class="brand-sub">Project Control</span>
-            </div>
-
+        <div class="nav-links">
+            <a href="#research">Forschung</a>
+            <a href="#projects">Projekte</a>
+            <a href="#status">Status</a>
+            <a href="#about">Über uns</a>
         </div>
 
-        <div class="nav-title">Workspace</div>
+    </div>
+</nav>
 
-        <nav class="nav">
 
-            <button class="active">
-                <span class="nav-icon">◈</span>
-                Dashboard
-            </button>
+<!-- =====================================================
+     HERO
+     ===================================================== -->
 
-            <button onclick="scrollToProjects()">
-                <span class="nav-icon">▤</span>
-                Projekte
-            </button>
+<header class="hero">
 
-            <button onclick="scrollToTimeline()">
-                <span class="nav-icon">◷</span>
-                Timeline
-            </button>
+    <div>
 
-            <button onclick="focusDeadlines()">
-                <span class="nav-icon">⚑</span>
-                Deadlines
-            </button>
-
-        </nav>
-
-        <div class="sidebar-bottom">
-
-            <div class="system-card">
-
-                <div class="system-label">
-                    System
-                </div>
-
-                <div class="system-status">
-                    <span class="status-dot"></span>
-                    Local Storage aktiv
-                </div>
-
-            </div>
-
+        <div class="eyebrow">
+            ● Research & Innovation
         </div>
 
-    </aside>
-
-    <!-- MAIN -->
-    <main class="main">
-
-        <header class="topbar">
-
-            <div>
-                <div class="page-eyebrow">
-                    Project Intelligence
-                </div>
-
-                <h1 class="page-title">
-                    Deadline Control
-                </h1>
-
-                <div class="page-description">
-                    Projekte, Fortschritt und kritische Termine auf einen Blick.
-                </div>
-            </div>
-
-            <div class="top-actions">
-
-                <button
-                    class="mobile-menu"
-                    onclick="alert('Auf kleinen Bildschirmen ist die Navigation über die Dashboard-Ansicht optimiert.')"
-                >
-                    ☰
-                </button>
-
-                <button class="btn" onclick="exportData()">
-                    ↓ Export
-                </button>
-
-                <button class="btn btn-primary" onclick="openModal()">
-                    + Neues Projekt
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <!-- KPI CARDS -->
-        <section class="kpis">
-
-            <div class="kpi">
-
-                <div class="kpi-top">
-                    <div class="kpi-label">Projekte</div>
-
-                    <div class="kpi-icon">◈</div>
-                </div>
-
-                <div class="kpi-value" id="totalProjects">
-                    0
-                </div>
-
-                <div class="kpi-meta">
-                    Aktive Projekte im Workspace
-                </div>
-
-            </div>
-
-
-            <div class="kpi kpi-danger">
-
-                <div class="kpi-top">
-                    <div class="kpi-label">Überfällig</div>
-
-                    <div class="kpi-icon">!</div>
-                </div>
-
-                <div class="kpi-value" id="overdueProjects">
-                    0
-                </div>
-
-                <div class="kpi-meta">
-                    Deadline bereits überschritten
-                </div>
-
-            </div>
-
-
-            <div class="kpi kpi-warning">
-
-                <div class="kpi-top">
-                    <div class="kpi-label">Kritisch</div>
-
-                    <div class="kpi-icon">△</div>
-                </div>
-
-                <div class="kpi-value" id="criticalProjects">
-                    0
-                </div>
-
-                <div class="kpi-meta">
-                    Deadline innerhalb von 7 Tagen
-                </div>
-
-            </div>
-
-
-            <div class="kpi kpi-success">
-
-                <div class="kpi-top">
-                    <div class="kpi-label">Im Plan</div>
-
-                    <div class="kpi-icon">✓</div>
-                </div>
-
-                <div class="kpi-value" id="safeProjects">
-                    0
-                </div>
-
-                <div class="kpi-meta">
-                    Mehr als 7 Tage bis Deadline
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- TIMELINE + DEADLINES -->
-        <section class="content-grid">
-
-            <div class="panel" id="timelinePanel">
-
-                <div class="panel-header">
-
-                    <div>
-                        <div class="panel-title">
-                            Projekt-Timeline
-                        </div>
-
-                        <div class="panel-subtitle">
-                            14-Tage-Fokus
-                        </div>
-                    </div>
-
-                    <button
-                        class="btn btn-small"
-                        onclick="openModal()"
-                    >
-                        + Projekt
-                    </button>
-
-                </div>
-
-                <div class="panel-body">
-
-                    <div class="timeline">
-
-                        <div class="timeline-inner" id="timeline"></div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- DEADLINES -->
-            <div class="panel" id="deadlinePanel">
-
-                <div class="panel-header">
-
-                    <div>
-                        <div class="panel-title">
-                            Nächste Deadlines
-                        </div>
-
-                        <div class="panel-subtitle">
-                            Priorisiert nach Dringlichkeit
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="panel-body">
-
-                    <div
-                        class="deadline-list"
-                        id="deadlineList"
-                    ></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- PROJECTS -->
-        <section
-            class="panel"
-            id="projectsPanel"
-            style="margin-top:18px;"
-        >
-
-            <div class="panel-header">
-
-                <div>
-                    <div class="panel-title">
-                        Alle Projekte
-                    </div>
-
-                    <div class="panel-subtitle">
-                        Fortschritt und Deadline-Status
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="panel-body">
-
-                <div class="filterbar">
-
-                    <div class="search">
-                        <input
-                            id="searchInput"
-                            type="text"
-                            placeholder="Projekt oder Verantwortlichen suchen …"
-                            oninput="renderProjects()"
-                        >
-                    </div>
-
-                    <select
-                        id="statusFilter"
-                        onchange="renderProjects()"
-                    >
-                        <option value="all">Alle Status</option>
-                        <option value="safe">Im Plan</option>
-                        <option value="warning">Kritisch</option>
-                        <option value="danger">Überfällig</option>
-                    </select>
-
-                    <select
-                        id="ownerFilter"
-                        onchange="renderProjects()"
-                    >
-                        <option value="all">Alle Verantwortlichen</option>
-                    </select>
-
-                </div>
-
-            </div>
-
-            <div
-                class="project-list"
-                id="projectList"
-            ></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-
-<!-- MODAL -->
-<div
-    class="modal-backdrop"
-    id="modalBackdrop"
-    onclick="backdropClick(event)"
->
-
-    <div class="modal">
-
-        <div class="modal-header">
-
-            <div class="modal-title" id="modalTitle">
-                Neues Projekt
-            </div>
-
-            <button
-                class="close"
-                onclick="closeModal()"
-            >
-                ×
-            </button>
+        <h1>
+            Forschung,<br>
+            die <span>Wasser</span><br>
+            bewegt.
+        </h1>
+
+        <p class="hero-text">
+            Willkommen bei der AQUA Research Group. Wir entwickeln
+            wissenschaftliche Lösungen für die Herausforderungen
+            von morgen – von der Grundlagenforschung bis zum
+            praktischen Demonstrator.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#projects" class="button button-primary">
+                Unsere Projekte
+            </a>
+
+            <a href="#about" class="button button-secondary">
+                Über die Forschungsgruppe
+            </a>
 
         </div>
-
-        <form
-            class="form"
-            id="projectForm"
-            onsubmit="saveProject(event)"
-        >
-
-            <div class="form-grid">
-
-                <div class="field full">
-
-                    <label for="projectName">
-                        Projektname
-                    </label>
-
-                    <input
-                        id="projectName"
-                        required
-                        placeholder="z. B. Neue Wasseraufbereitungsanlage"
-                    >
-
-                </div>
-
-
-                <div class="field">
-
-                    <label for="projectOwner">
-                        Verantwortlich
-                    </label>
-
-                    <input
-                        id="projectOwner"
-                        required
-                        placeholder="z. B. Anna Müller"
-                    >
-
-                </div>
-
-
-                <div class="field">
-
-                    <label for="projectProgress">
-                        Fortschritt %
-                    </label>
-
-                    <input
-                        id="projectProgress"
-                        type="number"
-                        min="0"
-                        max="100"
-                        value="50"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="field">
-
-                    <label for="projectStart">
-                        Startdatum
-                    </label>
-
-                    <input
-                        id="projectStart"
-                        type="date"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="field">
-
-                    <label for="projectDeadline">
-                        Deadline
-                    </label>
-
-                    <input
-                        id="projectDeadline"
-                        type="date"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="field full">
-
-                    <label for="projectCategory">
-                        Kategorie
-                    </label>
-
-                    <select id="projectCategory">
-
-                        <option>Wasser & Infrastruktur</option>
-                        <option>Engineering</option>
-                        <option>Digital</option>
-                        <option>Marketing</option>
-                        <option>Operations</option>
-                        <option>Sonstiges</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-actions">
-
-                <button
-                    type="button"
-                    class="btn"
-                    onclick="closeModal()"
-                >
-                    Abbrechen
-                </button>
-
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                >
-                    Projekt speichern
-                </button>
-
-            </div>
-
-        </form>
 
     </div>
 
-</div>
 
+    <div class="hero-visual">
 
-<div
-    class="toast"
-    id="toast"
-></div>
+        <div class="orbit"></div>
 
+        <div class="water-core"></div>
 
-<script>
-
-/* =====================================================
-   AQUA PROJECT DEADLINE CONTROL
-===================================================== */
-
-const STORAGE_KEY = "aqua_project_deadlines_v1";
-
-let editingId = null;
-
-
-/* -----------------------------------------------------
-   SAMPLE DATA
------------------------------------------------------ */
-
-const sampleProjects = [
-    {
-        id: crypto.randomUUID(),
-        name: "Wasserwerk Nord – Modernisierung",
-        owner: "Anna Müller",
-        progress: 78,
-        start: offsetDate(-18),
-        deadline: offsetDate(5),
-        category: "Wasser & Infrastruktur"
-    },
-    {
-        id: crypto.randomUUID(),
-        name: "Digitale Pumpensteuerung",
-        owner: "Jonas Weber",
-        progress: 61,
-        start: offsetDate(-12),
-        deadline: offsetDate(2),
-        category: "Engineering"
-    },
-    {
-        id: crypto.randomUUID(),
-        name: "Trinkwasseranalyse Q4",
-        owner: "Laura Schmidt",
-        progress: 91,
-        start: offsetDate(-25),
-        deadline: offsetDate(9),
-        category: "Operations"
-    },
-    {
-        id: crypto.randomUUID(),
-        name: "Blue Infrastructure 2030",
-        owner: "Daniel Fischer",
-        progress: 42,
-        start: offsetDate(-30),
-        deadline: offsetDate(17),
-        category: "Wasser & Infrastruktur"
-    },
-    {
-        id: crypto.randomUUID(),
-        name: "Kampagne Aqua Future",
-        owner: "Sophie Keller",
-        progress: 66,
-        start: offsetDate(-8),
-        deadline: offsetDate(-2),
-        category: "Marketing"
-    },
-    {
-        id: crypto.randomUUID(),
-        name: "Leckage-Monitoring",
-        owner: "Max Bauer",
-        progress: 35,
-        start: offsetDate(-5),
-        deadline: offsetDate(25),
-        category: "Digital"
-    }
-];
-
-
-/* -----------------------------------------------------
-   INIT
------------------------------------------------------ */
-
-let projects = loadProjects();
-
-if (!projects.length) {
-    projects = sampleProjects;
-    saveProjects();
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    setDefaultDates();
-
-    renderEverything();
-
-});
-
-
-/* -----------------------------------------------------
-   STORAGE
------------------------------------------------------ */
-
-function loadProjects() {
-
-    try {
-
-        const saved = localStorage.getItem(STORAGE_KEY);
-
-        if (!saved) return [];
-
-        return JSON.parse(saved);
-
-    } catch (error) {
-
-        console.error(error);
-
-        return [];
-
-    }
-
-}
-
-
-function saveProjects() {
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(projects)
-    );
-
-}
-
-
-/* -----------------------------------------------------
-   DATE HELPERS
------------------------------------------------------ */
-
-function dateOnly(date) {
-
-    const d = new Date(date);
-
-    d.setHours(0,0,0,0);
-
-    return d;
-
-}
-
-
-function offsetDate(days) {
-
-    const d = new Date();
-
-    d.setHours(0,0,0,0);
-
-    d.setDate(d.getDate() + days);
-
-    return toInputDate(d);
-
-}
-
-
-function toInputDate(date) {
-
-    const d = new Date(date);
-
-    const year = d.getFullYear();
-
-    const month = String(
-        d.getMonth() + 1
-    ).padStart(2, "0");
-
-    const day = String(
-        d.getDate()
-    ).padStart(2, "0");
-
-    return `${year}-${month}-${day}`;
-
-}
-
-
-function daysBetween(dateString) {
-
-    const today = dateOnly(new Date());
-
-    const target = dateOnly(
-        new Date(dateString + "T00:00:00")
-    );
-
-    return Math.round(
-        (target - today) / 86400000
-    );
-
-}
-
-
-function formatDate(dateString) {
-
-    if (!dateString) return "—";
-
-    return new Intl.DateTimeFormat(
-        "de-DE",
-        {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric"
-        }
-    ).format(
-        new Date(dateString + "T00:00:00")
-    );
-
-}
-
-
-/* -----------------------------------------------------
-   STATUS
------------------------------------------------------ */
-
-function getStatus(project) {
-
-    const days = daysBetween(project.deadline);
-
-    if (days < 0) {
-
-        return {
-            type: "danger",
-            label: "Überfällig"
-        };
-
-    }
-
-    if (days <= 7) {
-
-        return {
-            type: "warning",
-            label: "Kritisch"
-        };
-
-    }
-
-    return {
-        type: "safe",
-        label: "Im Plan"
-    };
-
-}
-
-
-/* -----------------------------------------------------
-   RENDER EVERYTHING
------------------------------------------------------ */
-
-function renderEverything() {
-
-    renderKPIs();
-
-    renderTimeline();
-
-    renderDeadlines();
-
-    renderOwnerFilter();
-
-    renderProjects();
-
-}
-
-
-/* -----------------------------------------------------
-   KPI
------------------------------------------------------ */
-
-function renderKPIs() {
-
-    let overdue = 0;
-    let critical = 0;
-    let safe = 0;
-
-    projects.forEach(project => {
-
-        const status = getStatus(project);
-
-        if (status.type === "danger") overdue++;
-
-        if (status.type === "warning") critical++;
-
-        if (status.type === "safe") safe++;
-
-    });
-
-
-    document.getElementById(
-        "totalProjects"
-    ).textContent = projects.length;
-
-
-    document.getElementById(
-        "overdueProjects"
-    ).textContent = overdue;
-
-
-    document.getElementById(
-        "criticalProjects"
-    ).textContent = critical;
-
-
-    document.getElementById(
-        "safeProjects"
-    ).textContent = safe;
-
-}
-
-
-/* -----------------------------------------------------
-   TIMELINE
------------------------------------------------------ */
-
-function renderTimeline() {
-
-    const container =
-        document.getElementById("timeline");
-
-    const today = dateOnly(new Date());
-
-    let html = `
-        <div class="timeline-head">
-
-            <div class="timeline-project-label">
-                Projekt
-            </div>
-
-            <div class="days">
-    `;
-
-
-    for (let i = 0; i < 14; i++) {
-
-        const day = new Date(today);
-
-        day.setDate(
-            today.getDate() + i
-        );
-
-        const isToday = i === 0;
-
-        html += `
-            <div class="day ${isToday ? "today" : ""}">
-                ${day.getDate()}<br>
-                ${day.toLocaleDateString(
-                    "de-DE",
-                    { weekday: "short" }
-                ).replace(".", "")}
-            </div>
-        `;
-
-    }
-
-
-    html += `
-            </div>
+        <div class="stat-card stat-1">
+            <strong>06</strong>
+            <small>aktive Projekte</small>
         </div>
-    `;
+
+        <div class="stat-card stat-2">
+            <strong>72%</strong>
+            <small>Projektfortschritt</small>
+        </div>
+
+        <div class="stat-card stat-3">
+            <strong>2026</strong>
+            <small>aktuelles Forschungsjahr</small>
+        </div>
+
+    </div>
+
+</header>
 
 
-    const visibleProjects =
-        [...projects]
-            .sort(
-                (a,b) =>
-                    new Date(a.deadline) -
-                    new Date(b.deadline)
-            )
-            .slice(0, 7);
+<!-- =====================================================
+     RESEARCH AREAS
+     ===================================================== -->
+
+<section id="research">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-kicker">
+                Forschung
+            </div>
+
+            <h2 class="section-title">
+                Unsere Schwerpunkte
+            </h2>
+        </div>
+
+        <p class="section-description">
+            Interdisziplinäre Forschung verbindet Wissenschaft,
+            Technologie und praktische Anwendung.
+        </p>
+
+    </div>
 
 
-    if (!visibleProjects.length) {
+    <div class="research-grid">
 
-        container.innerHTML =
-            `<div class="empty">Keine Projekte vorhanden.</div>`;
+        <article class="research-card">
 
-        return;
+            <div class="icon">◈</div>
 
-    }
+            <h3>Wasser & Ressourcen</h3>
 
+            <p>
+                Innovative Ansätze für einen nachhaltigen Umgang
+                mit Wasserressourcen und zukünftige Versorgungssysteme.
+            </p>
 
-    visibleProjects.forEach(project => {
-
-        const status = getStatus(project);
-
-        const start = dateOnly(
-            new Date(project.start + "T00:00:00")
-        );
-
-        const deadline = dateOnly(
-            new Date(project.deadline + "T00:00:00")
-        );
+        </article>
 
 
-        const timelineStart =
-            new Date(today);
+        <article class="research-card">
 
-        const timelineEnd =
-            new Date(today);
+            <div class="icon">⌁</div>
 
-        timelineEnd.setDate(
-            timelineEnd.getDate() + 13
-        );
+            <h3>Digitale Systeme</h3>
 
+            <p>
+                Sensorik, Datenanalyse und digitale Modelle zur
+                Beobachtung und Optimierung komplexer Systeme.
+            </p>
 
-        let startDay =
-            Math.round(
-                (start - timelineStart) /
-                86400000
-            );
-
-        let endDay =
-            Math.round(
-                (deadline - timelineStart) /
-                86400000
-            );
+        </article>
 
 
-        startDay =
-            Math.max(0, Math.min(13, startDay));
+        <article class="research-card">
 
-        endDay =
-            Math.max(0, Math.min(13, endDay));
+            <div class="icon">✦</div>
 
+            <h3>Technologie & Transfer</h3>
 
-        let duration =
-            endDay - startDay + 1;
+            <p>
+                Von der wissenschaftlichen Idee über Prototypen
+                bis hin zu Demonstratoren und realen Anwendungen.
+            </p>
 
-        duration =
-            Math.max(1, duration);
+        </article>
 
+    </div>
 
-        const left =
-            (startDay / 14) * 100;
-
-        const width =
-            (duration / 14) * 100;
+</section>
 
 
-        const initials =
-            project.owner
-                .split(" ")
-                .map(x => x[0])
-                .join("")
-                .slice(0,2)
-                .toUpperCase();
+<!-- =====================================================
+     PROJECTS
+     ===================================================== -->
+
+<section id="projects">
+
+    <div class="section-header">
+
+        <div>
+
+            <div class="section-kicker">
+                Forschungsportfolio
+            </div>
+
+            <h2 class="section-title">
+                Unsere Projekte
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Ein transparenter Überblick über laufende und
+            abgeschlossene Forschungsarbeiten.
+        </p>
+
+    </div>
 
 
-        const markerPosition =
-            (endDay / 14) * 100;
+    <div class="projects">
 
 
-        html += `
-            <div class="timeline-row">
+        <!-- PROJECT 01 -->
 
-                <div class="timeline-name">
+        <article class="project">
 
-                    <div class="timeline-avatar">
-                        ${initials}
+            <div class="project-top">
+
+                <div class="project-logo">
+                    AQ
+                </div>
+
+                <div>
+
+                    <h3 class="project-title">
+                        AQUA-SENSE
+                    </h3>
+
+                    <div class="project-meta">
+                        01.01.2025 – 31.12.2027 · Forschungsprojekt
                     </div>
 
-                    <span title="${escapeHtml(project.name)}">
-                        ${escapeHtml(project.name)}
-                    </span>
-
                 </div>
+
+                <div class="status status-active">
+                    In Bearbeitung
+                </div>
+
+            </div>
+
+
+            <p class="project-description">
+                Entwicklung eines intelligenten Sensorsystems zur
+                kontinuierlichen Überwachung von Wasserqualität
+                und Umweltparametern. Ziel ist die Kombination
+                energieeffizienter Sensorik mit intelligenter
+                Datenanalyse.
+            </p>
+
+
+            <div class="progress-area">
+
+                <div class="progress-header">
+                    <span>Aktueller Projektstand</span>
+                    <span class="progress-value">68 %</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width:68%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="timeline">
+
+                <span class="timeline-label">
+                    Projektlaufzeit
+                </span>
 
                 <div class="timeline-track">
 
                     <div
-                        class="timeline-bar bar-${status.type}"
-                        style="
-                            left:${left}%;
-                            width:${width}%;
-                        "
-                        title="${escapeHtml(project.name)} — Deadline ${formatDate(project.deadline)}"
-                    >
-                        ${project.progress}%
+                        class="timeline-progress"
+                        style="width:68%">
                     </div>
-
-                    <div
-                        class="deadline-marker marker-${status.type}"
-                        style="left:${markerPosition}%"
-                    ></div>
 
                 </div>
 
             </div>
-        `;
-
-    });
 
 
-    container.innerHTML = html;
+            <div class="milestones">
 
-}
+                <div class="milestone">
 
+                    <div class="milestone-dot"></div>
 
-/* -----------------------------------------------------
-   DEADLINES
------------------------------------------------------ */
+                    <strong>Konzept</strong>
+                    <span>Q2 2025 · abgeschlossen</span>
 
-function renderDeadlines() {
-
-    const container =
-        document.getElementById("deadlineList");
+                </div>
 
 
-    const sorted =
-        [...projects]
-            .sort(
-                (a,b) =>
-                    new Date(a.deadline) -
-                    new Date(b.deadline)
-            )
-            .slice(0, 6);
+                <div class="milestone">
+
+                    <div class="milestone-dot"></div>
+
+                    <strong>Prototyp</strong>
+                    <span>Q4 2025 · abgeschlossen</span>
+
+                </div>
 
 
-    if (!sorted.length) {
+                <div class="milestone">
 
-        container.innerHTML =
-            `<div class="empty">Keine Deadlines vorhanden.</div>`;
+                    <div class="milestone-dot"></div>
 
-        return;
+                    <strong>Feldtest</strong>
+                    <span>Q3 2026 · aktuell</span>
 
-    }
-
-
-    container.innerHTML =
-        sorted.map(project => {
-
-            const status =
-                getStatus(project);
-
-            const days =
-                daysBetween(project.deadline);
+                </div>
 
 
-            let label;
+                <div class="milestone future">
 
-            if (days < 0) {
+                    <div class="milestone-dot"></div>
 
-                label =
-                    `${Math.abs(days)} ${Math.abs(days) === 1 ? "Tag" : "Tage"} überfällig`;
+                    <strong>Demonstrator</strong>
+                    <span>Q2 2027 · geplant</span>
 
-            } else if (days === 0) {
+                </div>
 
-                label = "Heute";
-
-            } else if (days === 1) {
-
-                label = "Morgen";
-
-            } else {
-
-                label = `in ${days} Tagen`;
-
-            }
+            </div>
 
 
-            return `
-                <div
-                    class="deadline-item"
-                    onclick="editProject('${project.id}')"
-                    style="cursor:pointer"
-                >
+            <div class="project-footer">
 
-                    <div class="deadline-line ${status.type}">
-                    </div>
+                <div class="project-tags">
+                    <span class="tag">Sensorik</span>
+                    <span class="tag">KI</span>
+                    <span class="tag">Wasserqualität</span>
+                </div>
 
-                    <div class="deadline-content">
+                <a
+                    href="https://example.com"
+                    target="_blank"
+                    class="project-link">
 
-                        <div class="deadline-project">
-                            ${escapeHtml(project.name)}
-                        </div>
+                    Projekt-Homepage ↗
 
-                        <div class="deadline-date">
-                            ${formatDate(project.deadline)}
-                            · ${escapeHtml(project.owner)}
-                        </div>
+                </a>
 
-                    </div>
+            </div>
 
-                    <div class="deadline-days ${status.type}">
-                        ${label}
+        </article>
+
+
+
+        <!-- PROJECT 02 -->
+
+        <article class="project">
+
+            <div class="project-top">
+
+                <div class="project-logo">
+                    HY
+                </div>
+
+                <div>
+
+                    <h3 class="project-title">
+                        HYDRO-OPT
+                    </h3>
+
+                    <div class="project-meta">
+                        01.04.2024 – 30.09.2026 · Verbundprojekt
                     </div>
 
                 </div>
-            `;
 
-        })
-        .join("");
+                <div class="status status-critical">
+                    Endphase
+                </div>
 
-}
+            </div>
 
 
-/* -----------------------------------------------------
-   PROJECT LIST
------------------------------------------------------ */
+            <p class="project-description">
+                Digitale Modellierung und Optimierung von
+                Wasserverteilungssystemen mit dem Ziel,
+                Ressourcen effizienter zu nutzen und
+                Betriebsabläufe vorausschauend zu steuern.
+            </p>
 
-function renderProjects() {
 
-    const container =
-        document.getElementById("projectList");
+            <div class="progress-area">
 
+                <div class="progress-header">
+                    <span>Aktueller Projektstand</span>
+                    <span class="progress-value">87 %</span>
+                </div>
 
-    const query =
-        document.getElementById(
-            "searchInput"
-        ).value
-        .toLowerCase()
-        .trim();
+                <div class="progress">
 
-
-    const statusFilter =
-        document.getElementById(
-            "statusFilter"
-        ).value;
-
-
-    const ownerFilter =
-        document.getElementById(
-            "ownerFilter"
-        ).value;
-
-
-    const filtered =
-        projects.filter(project => {
-
-            const status =
-                getStatus(project);
-
-
-            const matchesQuery =
-                !query ||
-                project.name
-                    .toLowerCase()
-                    .includes(query) ||
-                project.owner
-                    .toLowerCase()
-                    .includes(query);
-
-
-            const matchesStatus =
-                statusFilter === "all" ||
-                status.type === statusFilter;
-
-
-            const matchesOwner =
-                ownerFilter === "all" ||
-                project.owner === ownerFilter;
-
-
-            return (
-                matchesQuery &&
-                matchesStatus &&
-                matchesOwner
-            );
-
-        });
-
-
-    if (!filtered.length) {
-
-        container.innerHTML =
-            `<div class="empty">Keine passenden Projekte gefunden.</div>`;
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        filtered
-            .sort(
-                (a,b) =>
-                    new Date(a.deadline) -
-                    new Date(b.deadline)
-            )
-            .map(project => {
-
-                const status =
-                    getStatus(project);
-
-                const days =
-                    daysBetween(project.deadline);
-
-
-                let countdown;
-
-                if (days < 0) {
-
-                    countdown =
-                        `${Math.abs(days)} ${Math.abs(days) === 1 ? "Tag" : "Tage"} überfällig`;
-
-                } else if (days === 0) {
-
-                    countdown = "Heute";
-
-                } else {
-
-                    countdown =
-                        `${days} ${days === 1 ? "Tag" : "Tage"}`;
-
-                }
-
-
-                return `
-                    <div class="project-row">
-
-                        <div class="project-main">
-
-                            <div
-                                class="project-title"
-                                title="${escapeHtml(project.name)}"
-                            >
-                                ${escapeHtml(project.name)}
-                            </div>
-
-                            <div class="project-owner">
-                                ${escapeHtml(project.owner)}
-                                · ${escapeHtml(project.category)}
-                            </div>
-
-                        </div>
-
-
-                        <div>
-                            <span class="${status.type}">
-                                ${status.label}
-                            </span>
-                        </div>
-
-
-                        <div class="progress-wrap">
-
-                            <div class="progress">
-                                <span
-                                    style="width:${project.progress}%"
-                                ></span>
-                            </div>
-
-                            <div class="progress-value">
-                                ${project.progress}%
-                            </div>
-
-                        </div>
-
-
-                        <div class="date">
-                            ${formatDate(project.deadline)}
-                        </div>
-
-
-                        <div class="countdown ${status.type}">
-                            ${countdown}
-                        </div>
-
-
-                        <div
-                            style="
-                                display:flex;
-                                justify-content:flex-end;
-                                gap:5px;
-                            "
-                        >
-
-                            <button
-                                class="btn btn-small"
-                                onclick="editProject('${project.id}')"
-                            >
-                                Edit
-                            </button>
-
-                            <button
-                                class="btn btn-small btn-danger"
-                                onclick="deleteProject('${project.id}')"
-                            >
-                                ×
-                            </button>
-
-                        </div>
-
+                    <div
+                        class="progress-bar"
+                        style="width:87%">
                     </div>
-                `;
 
-            })
-            .join("");
+                </div>
 
-}
+            </div>
 
 
-/* -----------------------------------------------------
-   OWNER FILTER
------------------------------------------------------ */
+            <div class="timeline">
 
-function renderOwnerFilter() {
+                <span class="timeline-label">
+                    Projektlaufzeit
+                </span>
 
-    const select =
-        document.getElementById(
-            "ownerFilter"
-        );
+                <div class="timeline-track">
 
+                    <div
+                        class="timeline-progress"
+                        style="width:87%">
+                    </div>
 
-    const current =
-        select.value;
+                </div>
 
+            </div>
 
-    const owners =
-        [...new Set(
-            projects.map(
-                project => project.owner
-            )
-        )].sort();
 
+            <div class="milestones">
 
-    select.innerHTML = `
-        <option value="all">
-            Alle Verantwortlichen
-        </option>
-        ${owners.map(owner => `
-            <option value="${escapeHtml(owner)}">
-                ${escapeHtml(owner)}
-            </option>
-        `).join("")}
-    `;
+                <div class="milestone">
 
+                    <div class="milestone-dot"></div>
 
-    if (
-        owners.includes(current)
-    ) {
+                    <strong>Modellierung</strong>
+                    <span>Q3 2024 · abgeschlossen</span>
 
-        select.value = current;
+                </div>
 
-    }
 
-}
+                <div class="milestone">
 
+                    <div class="milestone-dot"></div>
 
-/* -----------------------------------------------------
-   MODAL
------------------------------------------------------ */
+                    <strong>Simulation</strong>
+                    <span>Q2 2025 · abgeschlossen</span>
 
-function openModal(project = null) {
+                </div>
 
-    const backdrop =
-        document.getElementById(
-            "modalBackdrop"
-        );
 
+                <div class="milestone">
 
-    editingId =
-        project ? project.id : null;
+                    <div class="milestone-dot"></div>
 
+                    <strong>Validierung</strong>
+                    <span>Q1 2026 · abgeschlossen</span>
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        project
-            ? "Projekt bearbeiten"
-            : "Neues Projekt";
+                </div>
 
 
-    if (project) {
+                <div class="milestone">
 
-        document.getElementById(
-            "projectName"
-        ).value = project.name;
+                    <div class="milestone-dot"></div>
 
+                    <strong>Transfer</strong>
+                    <span>Q3 2026 · aktuell</span>
 
-        document.getElementById(
-            "projectOwner"
-        ).value = project.owner;
+                </div>
 
+            </div>
 
-        document.getElementById(
-            "projectProgress"
-        ).value = project.progress;
 
+            <div class="project-footer">
 
-        document.getElementById(
-            "projectStart"
-        ).value = project.start;
+                <div class="project-tags">
 
+                    <span class="tag">Modellierung</span>
+                    <span class="tag">Simulation</span>
+                    <span class="tag">Digital Twin</span>
 
-        document.getElementById(
-            "projectDeadline"
-        ).value = project.deadline;
+                </div>
 
+                <a
+                    href="https://example.com"
+                    target="_blank"
+                    class="project-link">
 
-        document.getElementById(
-            "projectCategory"
-        ).value = project.category;
+                    Projekt-Homepage ↗
 
-    } else {
+                </a>
 
-        document.getElementById(
-            "projectForm"
-        ).reset();
+            </div>
 
-        setDefaultDates();
+        </article>
 
-    }
 
 
-    backdrop.classList.add("open");
+        <!-- PROJECT 03 -->
 
-    setTimeout(
-        () =>
-            document
-                .getElementById("projectName")
-                .focus(),
-        100
-    );
+        <article class="project">
 
-}
+            <div class="project-top">
 
+                <div class="project-logo">
+                    EC
+                </div>
 
-function closeModal() {
+                <div>
 
-    document
-        .getElementById("modalBackdrop")
-        .classList.remove("open");
+                    <h3 class="project-title">
+                        ECOFLOW
+                    </h3>
 
-    editingId = null;
+                    <div class="project-meta">
+                        01.01.2023 – 31.12.2025 · Forschungsprojekt
+                    </div>
 
-}
+                </div>
 
+                <div class="status status-complete">
+                    Abgeschlossen
+                </div>
 
-function backdropClick(event) {
+            </div>
 
-    if (
-        event.target.id ===
-        "modalBackdrop"
-    ) {
 
-        closeModal();
+            <p class="project-description">
+                Untersuchung nachhaltiger Betriebsstrategien
+                für wassertechnische Anlagen und Entwicklung
+                eines praxisorientierten Bewertungssystems.
+            </p>
 
-    }
 
-}
+            <div class="progress-area">
 
+                <div class="progress-header">
+                    <span>Projektstand</span>
+                    <span class="progress-value">100 %</span>
+                </div>
 
-function setDefaultDates() {
+                <div class="progress">
 
-    const start =
-        document.getElementById(
-            "projectStart"
-        );
+                    <div
+                        class="progress-bar"
+                        style="width:100%">
+                    </div>
 
+                </div>
 
-    const deadline =
-        document.getElementById(
-            "projectDeadline"
-        );
+            </div>
 
 
-    if (!start.value) {
+            <div class="timeline">
 
-        start.value =
-            offsetDate(0);
+                <span class="timeline-label">
+                    Projektlaufzeit
+                </span>
 
-    }
+                <div class="timeline-track">
 
+                    <div
+                        class="timeline-progress"
+                        style="width:100%">
+                    </div>
 
-    if (!deadline.value) {
+                </div>
 
-        deadline.value =
-            offsetDate(14);
+            </div>
 
-    }
 
-}
+            <div class="milestones">
 
+                <div class="milestone">
 
-/* -----------------------------------------------------
-   SAVE PROJECT
------------------------------------------------------ */
+                    <div class="milestone-dot"></div>
 
-function saveProject(event) {
+                    <strong>Forschung</strong>
+                    <span>2023 · abgeschlossen</span>
 
-    event.preventDefault();
+                </div>
 
 
-    const name =
-        document.getElementById(
-            "projectName"
-        ).value.trim();
+                <div class="milestone">
 
+                    <div class="milestone-dot"></div>
 
-    const owner =
-        document.getElementById(
-            "projectOwner"
-        ).value.trim();
+                    <strong>Entwicklung</strong>
+                    <span>2024 · abgeschlossen</span>
 
+                </div>
 
-    const progress =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                Number(
-                    document.getElementById(
-                        "projectProgress"
-                    ).value
-                )
-            )
-        );
 
+                <div class="milestone">
 
-    const start =
-        document.getElementById(
-            "projectStart"
-        ).value;
+                    <div class="milestone-dot"></div>
 
+                    <strong>Demonstrator</strong>
+                    <span>2025 · abgeschlossen</span>
 
-    const deadline =
-        document.getElementById(
-            "projectDeadline"
-        ).value;
+                </div>
 
 
-    const category =
-        document.getElementById(
-            "projectCategory"
-        ).value;
+                <div class="milestone">
 
+                    <div class="milestone-dot"></div>
 
-    if (
-        new Date(deadline) <
-        new Date(start)
-    ) {
+                    <strong>Transfer</strong>
+                    <span>2025 · abgeschlossen</span>
 
-        showToast(
-            "Die Deadline darf nicht vor dem Startdatum liegen."
-        );
+                </div>
 
-        return;
+            </div>
 
-    }
 
+            <div class="project-footer">
 
-    if (editingId) {
+                <div class="project-tags">
 
-        const index =
-            projects.findIndex(
-                project =>
-                    project.id === editingId
-            );
+                    <span class="tag">Nachhaltigkeit</span>
+                    <span class="tag">Energie</span>
+                    <span class="tag">Transfer</span>
 
+                </div>
 
-        if (index !== -1) {
+                <a
+                    href="https://example.com"
+                    target="_blank"
+                    class="project-link">
 
-            projects[index] = {
+                    Projekt-Homepage ↗
 
-                ...projects[index],
+                </a>
 
-                name,
-                owner,
-                progress,
-                start,
-                deadline,
-                category
+            </div>
 
-            };
+        </article>
 
-        }
+    </div>
 
+</section>
 
-        showToast(
-            "Projekt aktualisiert."
-        );
 
-    } else {
+<!-- =====================================================
+     CURRENT STATUS
+     ===================================================== -->
 
-        projects.push({
+<section id="status">
 
-            id: crypto.randomUUID(),
+    <div class="section-header">
 
-            name,
-            owner,
-            progress,
-            start,
-            deadline,
-            category
+        <div>
 
-        });
+            <div class="section-kicker">
+                Live Overview
+            </div>
 
+            <h2 class="section-title">
+                Wo stehen wir?
+            </h2>
 
-        showToast(
-            "Projekt angelegt."
-        );
+        </div>
 
-    }
+        <p class="section-description">
+            Der aktuelle Stand unserer Forschungsaktivitäten
+            auf einen Blick.
+        </p>
 
+    </div>
 
-    saveProjects();
 
-    closeModal();
+    <div class="current-state">
 
-    renderEverything();
 
-}
+        <div class="state-card">
 
+            <div class="state-number">
+                72%
+            </div>
 
-/* -----------------------------------------------------
-   EDIT
------------------------------------------------------ */
+            <h3>
+                durchschnittlicher Projektfortschritt
+            </h3>
 
-function editProject(id) {
+            <p>
+                Unsere derzeit aktiven Projekte befinden sich
+                überwiegend in der Entwicklungs- und
+                Demonstrationsphase.
+            </p>
 
-    const project =
-        projects.find(
-            p => p.id === id
-        );
+        </div>
 
 
-    if (project) {
+        <div class="state-list">
 
-        openModal(project);
+            <div class="state-item">
 
-    }
+                <div class="state-icon">✓</div>
 
-}
+                <div>
+                    <strong>Forschung & Konzept</strong>
+                    <span>Grundlagen und Fragestellungen</span>
+                </div>
 
+                <b>100%</b>
 
-/* -----------------------------------------------------
-   DELETE
------------------------------------------------------ */
+            </div>
 
-function deleteProject(id) {
 
-    const project =
-        projects.find(
-            p => p.id === id
-        );
+            <div class="state-item">
 
+                <div class="state-icon">◆</div>
 
-    if (!project) return;
+                <div>
+                    <strong>Entwicklung</strong>
+                    <span>Modelle, Prototypen und Methoden</span>
+                </div>
 
+                <b>84%</b>
 
-    const confirmed =
-        confirm(
-            `Projekt "${project.name}" wirklich löschen?`
-        );
+            </div>
 
 
-    if (!confirmed) return;
+            <div class="state-item">
 
+                <div class="state-icon">◉</div>
 
-    projects =
-        projects.filter(
-            p => p.id !== id
-        );
+                <div>
+                    <strong>Demonstration</strong>
+                    <span>Erprobung unter realen Bedingungen</span>
+                </div>
 
+                <b>63%</b>
 
-    saveProjects();
+            </div>
 
-    renderEverything();
 
-    showToast(
-        "Projekt gelöscht."
-    );
+            <div class="state-item">
 
-}
+                <div class="state-icon">↗</div>
 
+                <div>
+                    <strong>Transfer</strong>
+                    <span>Überführung in die Praxis</span>
+                </div>
 
-/* -----------------------------------------------------
-   EXPORT
------------------------------------------------------ */
+                <b>41%</b>
 
-function exportData() {
+            </div>
 
-    const data =
-        JSON.stringify(
-            projects,
-            null,
-            2
-        );
+        </div>
 
+    </div>
 
-    const blob =
-        new Blob(
-            [data],
-            {
-                type: "application/json"
-            }
-        );
+</section>
 
 
-    const url =
-        URL.createObjectURL(blob);
+<!-- =====================================================
+     KEY NUMBERS
+     ===================================================== -->
 
+<section>
 
-    const a =
-        document.createElement("a");
+    <div class="numbers">
 
+        <div class="number-card">
 
-    a.href = url;
+            <div class="number">06</div>
 
-    a.download =
-        `aqua-projects-${toInputDate(new Date())}.json`;
+            <div class="number-label">
+                laufende Projekte
+            </div>
 
+        </div>
 
-    document.body.appendChild(a);
 
-    a.click();
+        <div class="number-card">
 
-    a.remove();
+            <div class="number">14</div>
 
-    URL.revokeObjectURL(url);
+            <div class="number-label">
+                Forschungspartner
+            </div>
 
+        </div>
 
-    showToast(
-        "Projektdaten exportiert."
-    );
 
-}
+        <div class="number-card">
 
+            <div class="number">23</div>
 
-/* -----------------------------------------------------
-   NAVIGATION
------------------------------------------------------ */
+            <div class="number-label">
+                wissenschaftliche Beiträge
+            </div>
 
-function scrollToProjects() {
+        </div>
 
-    document
-        .getElementById("projectsPanel")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
 
-}
+        <div class="number-card">
 
+            <div class="number">08</div>
 
-function scrollToTimeline() {
+            <div class="number-label">
+                abgeschlossene Projekte
+            </div>
 
-    document
-        .getElementById("timelinePanel")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+        </div>
 
-}
+    </div>
 
+</section>
 
-function focusDeadlines() {
 
-    document
-        .getElementById("deadlinePanel")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+<!-- =====================================================
+     ABOUT
+     ===================================================== -->
 
-}
+<section id="about">
 
+    <div class="section-header">
 
-/* -----------------------------------------------------
-   TOAST
------------------------------------------------------ */
+        <div>
 
-let toastTimer;
+            <div class="section-kicker">
+                Über uns
+            </div>
 
+            <h2 class="section-title">
+                Wissenschaft mit Wirkung.
+            </h2>
 
-function showToast(message) {
+        </div>
 
-    const toast =
-        document.getElementById(
-            "toast"
-        );
+        <p class="section-description">
+            Wir verbinden wissenschaftliche Exzellenz mit
+            praktischer Anwendung und gesellschaftlicher Relevanz.
+        </p>
 
+    </div>
 
-    toast.textContent = message;
 
-    toast.classList.add("show");
+    <div class="research-grid">
 
+        <article class="research-card">
 
-    clearTimeout(toastTimer);
+            <div class="icon">◎</div>
 
+            <h3>Interdisziplinär</h3>
 
-    toastTimer =
-        setTimeout(
-            () =>
-                toast.classList.remove(
-                    "show"
-                ),
-            2800
-        );
+            <p>
+                Wir verbinden Naturwissenschaften,
+                Ingenieurwesen, Datenwissenschaft und
+                angewandte Forschung.
+            </p>
 
-}
+        </article>
 
 
-/* -----------------------------------------------------
-   SECURITY / HTML ESCAPE
------------------------------------------------------ */
+        <article class="research-card">
 
-function escapeHtml(value) {
+            <div class="icon">↗</div>
 
-    return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+            <h3>Praxisorientiert</h3>
 
-}
+            <p>
+                Forschung endet für uns nicht bei der
+                Publikation. Wir entwickeln Lösungen,
+                die unter realen Bedingungen funktionieren.
+            </p>
 
+        </article>
 
-/* -----------------------------------------------------
-   KEYBOARD
------------------------------------------------------ */
 
-document.addEventListener(
-    "keydown",
-    event => {
+        <article class="research-card">
 
-        if (
-            event.key === "Escape"
-        ) {
+            <div class="icon">∞</div>
 
-            closeModal();
+            <h3>Offen & transparent</h3>
 
-        }
+            <p>
+                Wir machen Fortschritte, Ergebnisse und
+                Forschungsaktivitäten sichtbar und
+                zugänglich.
+            </p>
 
+        </article>
 
-        if (
-            event.key === "n" &&
-            !event.ctrlKey &&
-            !event.metaKey &&
-            document.activeElement.tagName !== "INPUT"
-        ) {
+    </div>
 
-            openModal();
+</section>
 
-        }
 
-    }
-);
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
 
+<footer>
 
-/* -----------------------------------------------------
-   AUTO REFRESH
------------------------------------------------------ */
+    <div class="footer-inner">
 
-setInterval(
-    () => {
+        <div>
 
-        renderKPIs();
+            <div class="footer-brand">
+                AQUA RESEARCH GROUP
+            </div>
 
-        renderTimeline();
+            <div>
+                Research · Innovation · Water
+            </div>
 
-        renderDeadlines();
+        </div>
 
-        renderProjects();
 
-    },
-    60 * 1000
-);
+        <div>
+            © 2026 AQUA Research Group
+        </div>
 
-</script>
+
+        <div>
+
+            <a href="#">
+                Impressum
+            </a>
+
+            &nbsp; · &nbsp;
+
+            <a href="#">
+                Datenschutz
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
 
 </body>
 </html>
+```
